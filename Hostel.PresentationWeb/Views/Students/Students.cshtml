@@ -1,0 +1,107 @@
+﻿@page
+@model Hostel.Presentation.Pages.Students.StudentsModel
+@*@{
+        ViewData["Title"] = "Студенты";
+        ViewData["PageID"] = "Table";
+
+    }*@
+@ViewBag.studentList;
+@{
+
+}
+
+<!--Название таблицы-->
+<div class="students-header">
+    <h1 class="students-header-name">Студенты</h1>
+    <footer class="border-top footer" style="max-width:100%;width:100%;left:0"> </footer>
+</div>
+
+<!--Кнопки-->
+<div class="button-container">
+    <form method="post" asp-controller="Home" asp-action="Students">
+        <div class="button-block" id="AddButton" onclick="AddClick()">
+            <input type="submit" value="@ViewBag.test" class="button-text">
+        </div>
+        <div class="button-block" id="EditButton">
+            <a class="button-text" asp-area="" asp-page="/Students/StudentFillForm">Редактировать</a>
+        </div>
+        <div class="button-block" id="DeleteButton" onclick="DeleteClick()">
+            <a class="button-text">Удалить</a>
+        </div>
+        <div class="button-block" id="ApplyButton" hidden>
+            <a class="button-text">Подтвердить</a>
+        </div>
+        <div class="button-block" id="CancelButton" hidden>
+            <a class="button-text">Отмена</a>
+        </div>
+    </form>
+</div>
+
+
+
+
+<!--Таблица-->
+<div class="students-table-container">
+    <table id="table">
+        <!--Шапка таблицы-->
+        <tr class="students-table-header" id="headtable">
+            <th>Ф.И.О.</th>
+            <th>Пол</th>
+            <th>Страна</th>
+            <th>Факультет</th>
+            <th>Курс</th>
+            <th>Группа</th>
+            <th>Номер приказа</th>
+            <th>Дата заезда</th>
+            <th>Дата выезда</th>
+            <th style="min-width:180px;">Номер телефона</th>
+        </tr>
+
+        <!--Данные таблицы-->
+
+        @{
+
+            string n = "";
+            string dateTimeIn = "";
+            string dateTimeOut = "";
+        }
+        @*@foreach (var student in Model.Students)
+            {
+            <tr  class="students-table-row">
+                @{
+
+                    <td><a asp-page="/Students/StudentFillForm" asp-route-Id="@student.Id" style="color:inherit">@Html.DisplayFor(modelItem => student.FullName)</a> </td>
+                    <td>@Html.DisplayFor(modelItem => student.Gender)</td>
+                    <td>@Html.DisplayFor(modelItem => student.Nationality) </td>
+                    <td>@Html.DisplayFor(modelItem => student.Faculty) </td>
+                    <td>@Html.DisplayFor(modelItem => student.Course) </td>
+                    <td>@Html.DisplayFor(modelItem => student.Group) </td>
+                    <td>@Html.DisplayFor(modelItem => student.OrderNumber) </td>
+                    {
+                        dateTimeIn = student.DataIn.ToShortDateString();
+                        dateTimeOut = student.DataOut.ToShortDateString();
+                    }
+
+                    <td>@dateTimeIn</td>
+                    <td>@dateTimeOut</td>
+                    <td style="text-align: center;">
+                        @{
+                            n = "+375-44-123-45-67";
+                    }
+                    @n
+                    </td>
+
+
+
+                }
+            </tr>*@
+
+        }
+    </table>
+</div>
+
+
+
+@*<h4>count: @Model.Students.Count() </h4>*@
+
+@*<script src="~/js/StudentsPage.js"></script>*@
