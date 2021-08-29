@@ -8,14 +8,18 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace Hostel.PresentationWeb
 {
     public class Startup
     {
+        private IConfigurationRoot _confStr;
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+            _confStr = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
         }
 
         public IConfiguration Configuration { get; }
@@ -29,6 +33,9 @@ namespace Hostel.PresentationWeb
             {
                 opt.ViewLocationFormats.Add("/Views/Students/{0}.cshtml");
             });
+            services.AddDbContext<DataAccess.Context.AppDBContext>(options => options.UseSqlServer(_confStr.GetConnectionString("DefaultConnection")));
+            services.AddScoped<DataAccess.Repositories.Interfaces.IRoomRepository, DataAccess.Repositories.Implementation.SQLRoomRepository>();
+            services.AddScoped<DataAccess.Repositories.Interfaces.IStudentRepository, DataAccess.Repositories.Implementation.SQLStudentRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
