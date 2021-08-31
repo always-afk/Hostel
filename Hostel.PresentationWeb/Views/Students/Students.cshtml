@@ -1,10 +1,10 @@
-﻿@page
-@model Hostel.Presentation.Pages.Students.StudentsModel
-@*@{
+﻿
+@model List<Hostel.DataAccess.Models.LogicModels.Student>
+@{
         ViewData["Title"] = "Студенты";
         ViewData["PageID"] = "Table";
 
-    }*@
+}
 @ViewBag.studentList;
 @{
 
@@ -20,7 +20,7 @@
 <div class="button-container">
     <form method="post" asp-controller="Home" asp-action="Students">
         <div class="button-block" id="AddButton" onclick="AddClick()">
-            <input type="submit" value="@ViewBag.test" class="button-text">
+            <input type="submit" value="Добавить" class="button-text">
         </div>
         <div class="button-block" id="EditButton">
             <a class="button-text" asp-area="" asp-page="/Students/StudentFillForm">Редактировать</a>
@@ -34,9 +34,11 @@
         <div class="button-block" id="CancelButton" hidden>
             <a class="button-text">Отмена</a>
         </div>
+        <div class="button-block" id="SaveButton" >
+            <input type="submit" value="Сохранить" class="button-text">
+        </div>
     </form>
 </div>
-
 
 
 
@@ -65,7 +67,7 @@
             string dateTimeIn = "";
             string dateTimeOut = "";
         }
-        @*@foreach (var student in Model.Students)
+        @foreach (var student in Model)
             {
             <tr  class="students-table-row">
                 @{
@@ -85,16 +87,13 @@
                     <td>@dateTimeIn</td>
                     <td>@dateTimeOut</td>
                     <td style="text-align: center;">
-                        @{
-                            n = "+375-44-123-45-67";
-                    }
-                    @n
+                        @student.PhoneNumber
                     </td>
 
 
 
                 }
-            </tr>*@
+            </tr>
 
         }
     </table>

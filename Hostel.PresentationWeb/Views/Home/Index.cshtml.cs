@@ -20,7 +20,7 @@ namespace Hostel.PresentationWeb.Views.Home
 
         public void OnGet()
         {
-            Message = "Hello!";
+            Message = "Test!";
         }
     }
 }

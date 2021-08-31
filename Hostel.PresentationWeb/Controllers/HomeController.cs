@@ -6,21 +6,30 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Hostel.DataAccess.Models.LogicModels;
+using Hostel.BusinessLogic.Services.Interfaces;
 
 namespace Hostel.PresentationWeb.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IMockService _mock;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger,IMockService mock)
         {
+            _mock = mock;
             _logger = logger;
         }
 
         public IActionResult Index()
         {
-            return View();
+            ViewBag.Message = "TEST!";
+
+            Student newStudent = new Student(fullName: "Ерофеенко Владислав Алексеевич", nationality: "Беларусь", gender: 'М',
+                faculty: "ФИТР", course: 3, group: 10701218, orderNumber: 1, dataIn: new DateTime(2018, 8, 20), dataOut: new DateTime(2022, 8, 20), "+375441234567", 222);
+
+            return View(newStudent);
         }
 
         public IActionResult Privacy()
@@ -30,7 +39,11 @@ namespace Hostel.PresentationWeb.Controllers
 
          public IActionResult Students()
         {
-            return View();
+            ViewBag.test = "TEST button";
+            Student newStudent = new Student(fullName: "Ерофеенко Владислав Алексеевич", nationality: "Беларусь", gender: 'М',
+                faculty: "ФИТР", course: 3, group: 10701218, orderNumber: 1, dataIn: new DateTime(2018, 8, 20), dataOut: new DateTime(2022, 8, 20), "+375441234567", 222);
+
+            return View(_mock.GetAllStudents().ToList());
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

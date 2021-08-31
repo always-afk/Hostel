@@ -7,7 +7,7 @@ using Hostel.DataAccess.Models.LogicModels;
 
 namespace Hostel.BusinessLogic.Services.Interfaces
 {
-    public interface IMockSrvice
+    public interface IMockService
     {
         IEnumerable<Student> GetAllStudents();
         void Save(IEnumerable<Student> students);

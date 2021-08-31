@@ -1,0 +1,124 @@
+﻿﻿body {
+}
+
+container {
+}
+
+<style >
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
+</style >
+/*//Заголовок страницы//*/
+.students-header {
+    margin: 5px;
+}
+
+.students-header-name {
+    font-family: 'Montserrat', sans-serif;
+    -webkit-font-smoothing: subpixel-antialiased;
+    text-align: center;
+    font-size: 48px;
+    width: auto;
+}
+
+
+
+/*
+//Таблица
+*/
+.students-table-container {
+    font-size: 16px;
+    text-align: left;
+    max-width: 100%;
+    width: 100%;
+    margin-left: 1%;
+    margin-top: 25px;
+    align-content: center;
+    font-family: 'Montserrat', sans-serif;
+    border-collapse: separate;
+    line-height: 1.2;
+}
+
+/*Шапка таблицы*/
+.students-table-header {
+    width: 100%;
+    text-align: center;
+}
+/*
+//Элементы таблицы
+*/
+
+
+.students-table-row {
+    margin: 15px;
+    width: 100%;
+    vertical-align: top;
+}
+
+th, td {
+    padding: 10px 8px;
+    border-right: 1px groove #2664a8;
+    border-left: 1px groove #2664a8;
+}
+
+th {
+    background: rgba(83, 155, 209, 0.70);
+    border-bottom: 2px solid #1d1d1d;
+    vertical-align: bottom;
+    font-weight: 600;
+}
+
+td {
+    background: rgba(211, 242, 255, 0.80);
+    font-weight: 100;
+    padding: 8px 8px;
+    transition: .1s linear;
+    border-bottom: 1px groove #2664a8;
+}
+
+tr:hover td {
+    color: rgba(139, 59, 225, 0.87);
+}
+
+.button-container {
+    margin-top: 10px;
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 20%;
+}
+
+.button-block {
+    display: inline-block;
+    color: #86b9df;
+    font-weight: 500;
+    text-decoration: none;
+    user-select: none;
+    padding: .05em .2em;
+    margin: 0.03em;
+    outline: none;
+    border: 2px solid;
+    border-radius: 2px;
+    transition: 0.2s;
+    position: relative;
+    text-decoration: none;
+}
+
+    .button-block:hover {
+        background: rgba(20,200,220,.2);
+        text-decoration: none;
+    }
+
+    .button-block:active {
+        background: white;
+    }
+
+.button-text {
+    text-decoration: none;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 1em;
+    text-align: center;
+    color: #1d1d1d;
+}
+
+a.button-text {
+    text-decoration: none;
+}
