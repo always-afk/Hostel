@@ -46,6 +46,24 @@ namespace Hostel.PresentationWeb.Controllers
             return View(_mock.GetAllStudents().ToList());
         }
 
+        [HttpPost]
+        public IActionResult Students(List<Student> students)
+        {
+            string result = "\n";
+            foreach (var student in students)
+            {
+                result += student.ViewAll();
+            }
+
+            return Content(result);
+        }
+
+        //[HttpPost]
+        //public IActionResult Students(string fullName)
+        //{
+        //    return Content($"full name: {fullName}");
+        //}
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

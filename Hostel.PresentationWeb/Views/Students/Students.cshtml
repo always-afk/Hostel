@@ -1,11 +1,13 @@
-﻿
+﻿@using Hostel.DataAccess.Models.LogicModels
 @model List<Hostel.DataAccess.Models.LogicModels.Student>
 @{
         ViewData["Title"] = "Студенты";
         ViewData["PageID"] = "Table";
 
 }
-
+@{
+    List<Student> studentList = new List<Student>();
+}
 
 <!--Название таблицы-->
 <div class="students-header">
@@ -25,13 +27,18 @@
         <div class="button-block" id="DeleteButton" onclick="DeleteClick()">
             <a class="button-text">Удалить</a>
         </div>
-        <div class="button-block" id="ApplyButton" hidden>
-            <a class="button-text">Подтвердить</a>
+
+
+        <div class="button-block" id="ApplyDeleteButton" hidden>
+            <a class="button-text">Удалить</a>
+        </div>
+        <div class="button-block" id="ApplyAddButton" hidden>
+            <a class="button-text">Добавить</a>
         </div>
         <div class="button-block" id="CancelButton" hidden>
             <a class="button-text">Отмена</a>
         </div>
-            <input type="submit" value="Сохранить" id="SaveButton" class="button-block">
+        <input type="submit" value="Сохранить" id="SaveButton" class="button-block">
 
     </div>
 
@@ -59,37 +66,94 @@
                 string n = "";
                 string dateTimeIn = "";
                 string dateTimeOut = "";
+                Student newStudent = new Student();
             }
-            @foreach (var student in Model)
+
+
+            @for (var i=0;i<Model.Count;i++)
+        {
+        <tr class="students-table-row">
+            @{
+                <td><a asp-page="/Students/StudentFillForm" asp-route-Id="@Model[i].Id" style="color:inherit">@Model[i].FullName</a> </td>
+                <td width="70px">@Model[i].Gender</td>
+                <td> @Model[i].Nationality </td>
+                <td>@Model[i].Faculty </td>
+                <td>@Model[i].Course </td>
+                <td>@Model[i].Group </td>
+                <td>@Model[i].OrderNumber </td>
+                {
+                    dateTimeIn = Model[i].DataIn.ToShortDateString();
+                    dateTimeOut = Model[i].DataOut.ToShortDateString();
+                }
+
+                <td>@dateTimeIn</td>
+                <td>@dateTimeOut</td>
+                <td style="text-align: center;">
+                    @Model[i].PhoneNumber
+                </td>
+
+                {
+                    //newStudent.FullName = student.FullName;
+                    //newStudent.FullName = student.FullName;
+                    //newStudent.Nationality = student.Nationality;
+                    //newStudent.Nationality = student.Nationality;
+                    //newStudent.Nationality = student.Nationality;
+                    //newStudent.Nationality = student.Nationality;
+                    //newStudent.Nationality = student.Nationality;
+                    //newStudent.Nationality = student.Nationality;
+                    //newStudent.Nationality = student.Nationality;
+                    //newStudent.Nationality = student.Nationality;
+                    studentList.Add(Model[i]);
+
+                }
+                <input type="hidden" name="students[@i].FullName" value="@Model[i].FullName">
+                <input type="hidden" name="students[@i].Gender" value="@Model[i].Gender">
+                <input type="hidden" name="students[@i].Nationality" value="@Model[i].Nationality">
+                <input type="hidden" name="students[@i].Faculty" value="@Model[i].Faculty">
+                <input type="hidden" name="students[@i].Course" value="@Model[i].Course">
+                <input type="hidden" name="students[@i].Group" value="@Model[i].Group">
+                <input type="hidden" name="students[@i].OrderNumber" value="@Model[i].OrderNumber">
+                <input type="hidden" name="students[@i].dateTimeIn" value="@dateTimeIn">
+                <input type="hidden" name="students[@i].dateTimeOut" value="@dateTimeOut">
+                <input type="hidden" name="students[@i].PhoneNumber" value="@Model[i].PhoneNumber">
+            }
+        </tr>
+        }
+
+            @*@for (var i=0;i<Model.Count;i++)
+        {
+            <tr class="students-table-row">
+        @{
+            <td>@Html.TextBoxFor(m => m[i].FullName, new { disabled = "disabled", @readonly = "readonly" })</td>
+            <td width="70px">@Html.EditorFor(modelItem => modelItem[i].Gender)</td>
+            <td> @Html.EditorFor(modelItem => modelItem[i].Nationality) </td>
+            <td>@Html.EditorFor(modelItem => modelItem[i].Faculty) </td>
+            <td>@Html.EditorFor(modelItem => modelItem[i].Course) </td>
+            <td>@Html.EditorFor(modelItem => modelItem[i].Group) </td>
+            <td>@Html.EditorFor(modelItem => modelItem[i].OrderNumber) </td>
             {
-                <tr class="students-table-row">
-                    @{
-
-                        <td><a asp-page="/Students/StudentFillForm" asp-route-Id="@student.Id" style="color:inherit">@Html.DisplayFor(modelItem => student.FullName)</a> </td>
-                        <td width="70px">@Html.DisplayFor(modelItem => student.Gender)</td>
-                        <td>@Html.DisplayFor(modelItem => student.Nationality) </td>
-                        <td>@Html.DisplayFor(modelItem => student.Faculty) </td>
-                        <td>@Html.DisplayFor(modelItem => student.Course) </td>
-                        <td>@Html.DisplayFor(modelItem => student.Group) </td>
-                        <td>@Html.DisplayFor(modelItem => student.OrderNumber) </td>
-                        {
-                            dateTimeIn = student.DataIn.ToShortDateString(); 
-                            dateTimeOut = student.DataOut.ToShortDateString();
-                        }
-
-                        <td>@dateTimeIn</td>
-                        <td>@dateTimeOut</td>
-                        <td style="text-align: center;">
-                            @student.PhoneNumber
-                        </td>
-
-
-
-                    }
-                </tr>
-
+                dateTimeIn = Model[i].DataIn.ToShortDateString();
+                dateTimeOut = Model[i].DataOut.ToShortDateString();
             }
+
+            <td>@dateTimeIn</td>
+            <td>@dateTimeOut</td>
+            <td style="text-align: center;">
+                @Model[i].PhoneNumber
+            </td>
+        }
+            </tr>
+        }*@
+
+        @*<input type="hidden" name="fullName" value="@studentList[studentList.Count()-1].FullName">*@
+
+            @*@for (var i=0;i<Model.Count;i++)
+            {
+                @Html.EditorFor(m=>m[i].FullName)
+            }*@
         </table>
+
+        @*<input type="submit" />*@
     </div>
 </form>
 

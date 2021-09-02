@@ -1,9 +1,12 @@
 ﻿function AddClick() {
 
     HideMainButons()
-    ShowSecButtons()
+    ShowAddButtons()
+    SetAddButtons()
 
     var table = document.getElementById("table")
+    var tBody = table.getElementsByTagName("tbody")[0]
+    console.log("tbody length: "+tBody.length)
     var newRow = document.createElement("tr")
 
     var head = document.getElementById("headtable")
@@ -26,6 +29,7 @@
         newTdCell.style.padding = "0"
         newTdCell.style.background = "white"
         var newInput = document.createElement("input")
+        newInput.name = "students["+6+"].FullName"
         if (i == 0) {
             var firstInputCell = newInput
         }
@@ -50,17 +54,16 @@
         newInput.select()
     }
 
-    SetAddButtons()
 
-    table.appendChild(newRow)
+    table.getElementsByTagName("tbody")[0].appendChild(newRow)
     firstInputCell.select()
 }
 
 function DeleteClick() {
 
     HideMainButons()
-
     SetDelButtons()
+    ShowDeleteButtons()    
 
     var elems = table.getElementsByTagName('tr');
 
@@ -90,7 +93,6 @@ function DeleteClick() {
         
     }
 
-    ShowSecButtons()    
 }
 
 function ApplyDelete() {
@@ -160,7 +162,7 @@ function ApplyAdd() {
     }
 
     lastrow.remove()
-    table.appendChild(newRow)
+    table.getElementsByTagName("tbody")[0].appendChild(newRow)
 
     ShowMainButtons()
     HideSecButtons()
@@ -186,21 +188,30 @@ function ShowMainButtons() {
 }
 
 function HideSecButtons() {
-    var ap = document.getElementById("ApplyButton")
-    var can = document.getElementById("CancelButton")
-    ap.hidden = true
-    can.hidden = true
+    var applyAdd = document.getElementById("ApplyAddButton")
+    var applyDelete= document.getElementById("ApplyDeleteButton")
+    var cancelBtn = document.getElementById("CancelButton")
+    applyAdd.hidden = true
+    applyDelete.hidden = true
+    cancelBtn.hidden = true
+    
 }
 
-function ShowSecButtons() {
-    var ap = document.getElementById("ApplyButton")
+function ShowDeleteButtons() {
+    var ap = document.getElementById("ApplyDeleteButton")
+    var can = document.getElementById("CancelButton")
+    ap.hidden = false
+    can.hidden = false
+}
+function ShowAddButtons() {
+    var ap = document.getElementById("ApplyAddButton")
     var can = document.getElementById("CancelButton")
     ap.hidden = false
     can.hidden = false
 }
 
 function SetDelButtons() {
-    var apply = document.getElementById("ApplyButton")
+    var apply = document.getElementById("ApplyDeleteButton")
     apply.onclick = ApplyDelete
 
     var del = document.getElementById("CancelButton")
@@ -208,7 +219,7 @@ function SetDelButtons() {
 }
 
 function SetAddButtons() {
-    var apply = document.getElementById("ApplyButton")
+    var apply = document.getElementById("ApplyAddButton")
     apply.onclick = ApplyAdd
 
     var del = document.getElementById("CancelButton")
@@ -216,8 +227,11 @@ function SetAddButtons() {
 }
 
 function SetNullButtons() {
-    var apply = document.getElementById("ApplyButton")
+    var apply = document.getElementById("ApplyAddButton")
     apply.onclick = null
+
+    var deleteBtn = document.getElementById("ApplyDeleteButton")
+    deleteBtn.onclick = null
 
     var del = document.getElementById("CancelButton")
     del.onclick = null

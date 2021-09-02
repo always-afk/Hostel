@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reflection;
 using Microsoft.EntityFrameworkCore;
 
 namespace Hostel.DataAccess.Models.LogicModels
@@ -35,6 +36,25 @@ namespace Hostel.DataAccess.Models.LogicModels
             DataIn = dataIn;
             DataOut = dataOut;
             RoomId = roomId;
+        }
+
+        public string ViewAll()
+        {
+            PropertyInfo[] myPropertyInfo;
+            Type type = typeof(Student);
+            myPropertyInfo = type.GetProperties();
+
+            string result = "\n";
+            for (var i = 0; i < myPropertyInfo.Length; i++)
+            {
+                result += myPropertyInfo[i].Name + ": ";
+                result += myPropertyInfo[i].GetValue(this) + ";  ";
+            }
+            result += "\n";
+
+
+
+            return result;
         }
     }
 }
