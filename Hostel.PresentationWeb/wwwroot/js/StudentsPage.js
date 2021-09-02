@@ -8,30 +8,52 @@
 
     var head = document.getElementById("headtable")
 
-    var c = head.cells
+    var cells = head.cells
 
-    var sizes = []
-    var ph = []
+    var sizesWidth = []
+    var sizesHeight = []
+    var placeholders = []
 
-    for (var i of c) {
-        sizes.push(i.clientWidth)
-        ph.push(i.innerHTML)
+    for (var cell of cells) {
+        sizesWidth.push(cell.clientWidth)
+        sizesHeight.push(cell.clientHeight)
+        placeholders.push(cell.innerHTML)
     }
 
     for (var i = 0; i < 10; i++) {
         
-        var newFullNameElem = document.createElement("td")
-        var fullName = document.createElement("input")
-        fullName.type = Text
-        fullName.style.width = sizes[i] + "px"
-        fullName.placeholder = ph[i]
-        newFullNameElem.appendChild(fullName)
-        newRow.appendChild(newFullNameElem)
+        var newTdCell = document.createElement("td")
+        newTdCell.style.padding = "0"
+        newTdCell.style.background = "white"
+        var newInput = document.createElement("input")
+        if (i == 0) {
+            var firstInputCell = newInput
+        }
+        newInput.type = Text
+        //fullName.style.width = parseInt(sizes[i])-17 + "px"
+
+        //Styles:
+        newInput.style.width = parseInt(sizesWidth[i]) -1 + "px"
+        newInput.style.height = parseInt(sizesHeight[i])  + "px"
+        newInput.style.border = "0"
+        newInput.style.padding="8px"
+        newInput.style.borderRadius = "0px"
+        newInput.style.background = "rgba(90,100, 205, 0.05)"
+        
+        
+
+
+        //
+        newInput.placeholder = placeholders[i]
+        newTdCell.appendChild(newInput)
+        newRow.appendChild(newTdCell)
+        newInput.select()
     }
 
     SetAddButtons()
 
     table.appendChild(newRow)
+    firstInputCell.select()
 }
 
 function DeleteClick() {
@@ -47,10 +69,21 @@ function DeleteClick() {
     for (var el of elems) {
         if (curr != 0) {
             var e = document.createElement('td');
+            e.style.padding = "0"
+            e.style.margin = "0"
+            e.style.width = el.offsetHeight -1  + "px"
+            e.style.height = el.offsetHeight -1 + "px"
+            e.style.verticalAlign = "middle"
+            e.style.textAlign = "center"
             var box = document.createElement("input");
+
             box.type = "checkbox"
-            box.style.height = el.style.height + "px"
+            box.style.padding = "0"
+            box.style.margin = "0"
+            box.style.width = parseInt(el.offsetHeight) - 8 + "px"
+            box.style.height = parseInt(el.offsetHeight) - 8 + "px"
             e.appendChild(box)
+
             el.appendChild(e)
         }
         curr += 1
