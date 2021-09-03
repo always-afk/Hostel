@@ -40,15 +40,15 @@ namespace Hostel.DataAccess.Models.LogicModels
 
         public string ViewAll()
         {
-            PropertyInfo[] myPropertyInfo;
+            PropertyInfo[] propertyInfo;
             Type type = typeof(Student);
-            myPropertyInfo = type.GetProperties();
+            propertyInfo = type.GetProperties();
 
             string result = "\n";
-            for (var i = 0; i < myPropertyInfo.Length; i++)
+            for (var i = 0; i < propertyInfo.Length; i++)
             {
-                result += myPropertyInfo[i].Name + ": ";
-                result += myPropertyInfo[i].GetValue(this) + ";  ";
+                result += propertyInfo[i].Name + ": ";
+                result += propertyInfo[i].GetValue(this) + ";  ";
             }
             result += "\n";
 

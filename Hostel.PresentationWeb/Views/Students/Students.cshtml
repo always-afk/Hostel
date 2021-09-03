@@ -93,18 +93,7 @@
                 </td>
 
                 {
-                    //newStudent.FullName = student.FullName;
-                    //newStudent.FullName = student.FullName;
-                    //newStudent.Nationality = student.Nationality;
-                    //newStudent.Nationality = student.Nationality;
-                    //newStudent.Nationality = student.Nationality;
-                    //newStudent.Nationality = student.Nationality;
-                    //newStudent.Nationality = student.Nationality;
-                    //newStudent.Nationality = student.Nationality;
-                    //newStudent.Nationality = student.Nationality;
-                    //newStudent.Nationality = student.Nationality;
                     studentList.Add(Model[i]);
-
                 }
                 <input type="hidden" name="students[@i].FullName" value="@Model[i].FullName">
                 <input type="hidden" name="students[@i].Gender" value="@Model[i].Gender">
@@ -113,56 +102,17 @@
                 <input type="hidden" name="students[@i].Course" value="@Model[i].Course">
                 <input type="hidden" name="students[@i].Group" value="@Model[i].Group">
                 <input type="hidden" name="students[@i].OrderNumber" value="@Model[i].OrderNumber">
-                <input type="hidden" name="students[@i].dateTimeIn" value="@dateTimeIn">
-                <input type="hidden" name="students[@i].dateTimeOut" value="@dateTimeOut">
+                <input type="hidden" name="students[@i].DataIn" value="@Model[i].DataIn">
+                <input type="hidden" name="students[@i].DataOut" value="@Model[i].DataOut">
                 <input type="hidden" name="students[@i].PhoneNumber" value="@Model[i].PhoneNumber">
             }
         </tr>
         }
-
-            @*@for (var i=0;i<Model.Count;i++)
-        {
-            <tr class="students-table-row">
-        @{
-            <td>@Html.TextBoxFor(m => m[i].FullName, new { disabled = "disabled", @readonly = "readonly" })</td>
-            <td width="70px">@Html.EditorFor(modelItem => modelItem[i].Gender)</td>
-            <td> @Html.EditorFor(modelItem => modelItem[i].Nationality) </td>
-            <td>@Html.EditorFor(modelItem => modelItem[i].Faculty) </td>
-            <td>@Html.EditorFor(modelItem => modelItem[i].Course) </td>
-            <td>@Html.EditorFor(modelItem => modelItem[i].Group) </td>
-            <td>@Html.EditorFor(modelItem => modelItem[i].OrderNumber) </td>
-            {
-                dateTimeIn = Model[i].DataIn.ToShortDateString();
-                dateTimeOut = Model[i].DataOut.ToShortDateString();
-            }
-
-            <td>@dateTimeIn</td>
-            <td>@dateTimeOut</td>
-            <td style="text-align: center;">
-                @Model[i].PhoneNumber
-            </td>
-        }
-            </tr>
-        }*@
-
-        @*<input type="hidden" name="fullName" value="@studentList[studentList.Count()-1].FullName">*@
-
-            @*@for (var i=0;i<Model.Count;i++)
-            {
-                @Html.EditorFor(m=>m[i].FullName)
-            }*@
         </table>
-
-        @*<input type="submit" />*@
     </div>
 </form>
 
 
 
-
-
-
-
-@*<h4>count: @Model.Students.Count() </h4>*@
 
 <script src="~/js/StudentsPage.js"></script>

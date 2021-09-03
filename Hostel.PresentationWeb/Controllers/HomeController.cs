@@ -24,12 +24,9 @@ namespace Hostel.PresentationWeb.Controllers
 
         public IActionResult Index()
         {
-            ViewBag.Message = "TEST!";
+            ViewBag.Message = "Hello!";
 
-            Student newStudent = new Student(fullName: "Ерофеенко Владислав Алексеевич", nationality: "Беларусь", gender: 'М',
-                faculty: "ФИТР", course: 3, group: 10701218, orderNumber: 1, dataIn: new DateTime(2018, 8, 20), dataOut: new DateTime(2022, 8, 20), "+375441234567", 222);
-
-            return View(newStudent);
+            return View();
         }
 
         public IActionResult Privacy()
@@ -58,11 +55,6 @@ namespace Hostel.PresentationWeb.Controllers
             return Content(result);
         }
 
-        //[HttpPost]
-        //public IActionResult Students(string fullName)
-        //{
-        //    return Content($"full name: {fullName}");
-        //}
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
