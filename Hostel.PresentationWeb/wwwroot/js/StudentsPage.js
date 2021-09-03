@@ -29,7 +29,7 @@
         newTdCell.style.padding = "0"
         newTdCell.style.background = "white"
         var newInput = document.createElement("input")
-        newInput.name = "students["+6+"].FullName"
+        /*newInput.name = "students["+6+"].FullName"*/
         if (i == 0) {
             var firstInputCell = newInput
         }
@@ -152,13 +152,23 @@ function CancelAdd() {
 
 function ApplyAdd() {
     var rows = table.getElementsByTagName('tr')
-    var lastrow = rows.item(rows.length - 1)
-    var newRow = document.createElement("tr")
+    var lastrowNum = rows.length - 1
+    var lastrow = rows.item(lastrowNum)
+    var newRow = document.createElement('tr')
 
     for (var i of lastrow.cells) {
         var td = document.createElement('td')
+        var input = document.createElement('input')
+        input.type = 'hidden'
+        input.name = 'students[' + (lastrowNum - 1) + '].FullName'
+        
         td.innerHTML = i.childNodes[0].value
+        input.value = td.innerHTML
+        td.appendChild(input)
         newRow.appendChild(td)
+        //i.innerHTML = i.childNodes[0].value
+        //i.childNodes[0].name = "Model[" + lastrowNum + "].FullName"
+        //i.childNodes[0].hidden = true
     }
 
     lastrow.remove()
