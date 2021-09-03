@@ -155,13 +155,15 @@ function ApplyAdd() {
     var lastrowNum = rows.length - 1
     var lastrow = rows.item(lastrowNum)
     var newRow = document.createElement('tr')
+    var properties = ['FullName', 'Nationality', 'Gender', 'Faculty', 'Course', 'Group', 'OrderNumber', 'DataIn', 'DataOut', 'PhoneNumber']
+    var j = 0
 
     for (var i of lastrow.cells) {
         var td = document.createElement('td')
         var input = document.createElement('input')
         input.type = 'hidden'
-        input.name = 'students[' + (lastrowNum - 1) + '].FullName'
-        
+        input.name = 'students[' + (lastrowNum - 1) + '].' + properties[j]
+        j += 1
         td.innerHTML = i.childNodes[0].value
         input.value = td.innerHTML
         td.appendChild(input)
