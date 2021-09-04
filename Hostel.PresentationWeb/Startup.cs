@@ -20,6 +20,7 @@ namespace Hostel.PresentationWeb
         {
             Configuration = configuration;
             _confStr = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
+            
         }
 
         public IConfiguration Configuration { get; }

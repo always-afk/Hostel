@@ -1,0 +1,36 @@
+[
+  {
+    "outputFileName": "wwwroot/lib/bootstrap/dist/css/bundle.css",
+    "inputFiles": [
+      "wwwroot/lib/bootstrap/dist/css/bootstrap.css",
+      "wwwroot/lib/bootstrap/dist/css/bootstrap-grid.css",
+      "wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/css/bundle.css",
+    "inputFiles": [
+      "wwwroot/css/site.css",
+      "wwwroot/css/Styles.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/bundle.js",
+    "inputFiles": [
+      "wwwroot/js/site.js",
+      "wwwroot/js/StudentsPage.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/lib/jquery/dist/jquery.min.js",
+    "inputFiles": [
+      "wwwroot/lib/jquery/dist/jquery.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/lib/jquery-validation/dist/additional-methods.min.js",
+    "inputFiles": [
+      "wwwroot/lib/jquery-validation/dist/additional-methods.js"
+    ]
+  }
+]
