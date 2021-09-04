@@ -1,5 +1,5 @@
 ﻿using Hostel.DataAccess.Repositories.Interfaces;
-using Hostel.DataAccess.Models.LogicModels;
+using Hostel.Common.Models.LogicModels;
 using Hostel.DataAccess.Context;
 using System;
 using System.Collections.Generic;

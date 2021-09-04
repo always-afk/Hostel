@@ -155,7 +155,7 @@ function ApplyAdd() {
     var lastrowNum = rows.length - 1
     var lastrow = rows.item(lastrowNum)
     var newRow = document.createElement('tr')
-    var properties = ['FullName', 'Nationality', 'Gender', 'Faculty', 'Course', 'Group', 'OrderNumber', 'DataIn', 'DataOut', 'PhoneNumber']
+    var properties = ['FullName', 'Gender', 'Nationality', 'Faculty', 'Course', 'Group', 'OrderNumber', 'DataIn', 'DataOut', 'PhoneNumber']
     var j = 0
 
     for (var i of lastrow.cells) {

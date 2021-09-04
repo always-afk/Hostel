@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Hostel.DataAccess.Models.LogicModels;
+using Hostel.Common.Models.LogicModels;
 
 namespace Hostel.DataAccess.Repositories.Interfaces
 {
@@ -12,5 +12,6 @@ namespace Hostel.DataAccess.Repositories.Interfaces
         public IEnumerable<Student> GetAllStudents();
 
         public void Add(Student newStudent);
+        public void Save(List<Student> students);
     }
 }

@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Hostel.Common\Hostel.Common.csproj" />
     <ProjectReference Include="..\Hostel.DataAccess\Hostel.DataAccess.csproj" />
   </ItemGroup>
 

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Hostel.DataAccess.Models.LogicModels
+namespace Hostel.Common.Models.LogicModels
 {
     public class Room
     {

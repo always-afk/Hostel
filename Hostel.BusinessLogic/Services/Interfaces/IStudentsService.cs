@@ -7,9 +7,9 @@ using Hostel.Common.Models.LogicModels;
 
 namespace Hostel.BusinessLogic.Services.Interfaces
 {
-    public interface IMockService
+    public interface IStudentsService
     {
         IEnumerable<Student> GetAllStudents();
-        void Save(IEnumerable<Student> students);
+        void SaveStudents(List<Student> students);
     }
 }

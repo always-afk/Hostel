@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using Hostel.DataAccess.Models.LogicModels;
+using Hostel.Common.Models.LogicModels;
 using Hostel.BusinessLogic.Services.Interfaces;
 
 namespace Hostel.PresentationWeb.Controllers
@@ -14,11 +14,11 @@ namespace Hostel.PresentationWeb.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly IMockService _mock;
+        private readonly IStudentsService _studentsService;
 
-        public HomeController(ILogger<HomeController> logger,IMockService mock)
+        public HomeController(ILogger<HomeController> logger, IStudentsService studentsService)
         {
-            _mock = mock;
+            _studentsService = studentsService;
             _logger = logger;
         }
 
@@ -36,23 +36,15 @@ namespace Hostel.PresentationWeb.Controllers
 
          public IActionResult Students()
         {
-            ViewBag.test = "TEST button";
-            Student newStudent = new Student(fullName: "Ерофеенко Владислав Алексеевич", nationality: "Беларусь", gender: 'М',
-                faculty: "ФИТР", course: 3, group: 10701218, orderNumber: 1, dataIn: new DateTime(2018, 8, 20), dataOut: new DateTime(2022, 8, 20), "+375441234567", 222);
-
-            return View(_mock.GetAllStudents().ToList());
+            return View(_studentsService.GetAllStudents().ToList());
         }
 
         [HttpPost]
         public IActionResult Students(List<Student> students)
         {
-            string result = "\n";
-            foreach (var student in students)
-            {
-                result += student.ViewAll();
-            }
+            _studentsService.SaveStudents(students);
 
-            return Content(result);
+            return Students();
         }
 
 

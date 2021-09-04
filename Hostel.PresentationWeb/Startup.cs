@@ -37,6 +37,7 @@ namespace Hostel.PresentationWeb
             services.AddScoped<DataAccess.Repositories.Interfaces.IRoomRepository, DataAccess.Repositories.Implementation.SQLRoomRepository>();
             services.AddScoped<DataAccess.Repositories.Interfaces.IStudentRepository, DataAccess.Repositories.Implementation.SQLStudentRepository>();
             services.AddScoped<BusinessLogic.Services.Interfaces.IMockService, BusinessLogic.Services.Implementation.MockService>();
+            services.AddScoped<BusinessLogic.Services.Interfaces.IStudentsService, BusinessLogic.Services.Implementation.StudentsService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

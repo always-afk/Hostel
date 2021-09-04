@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31424.327
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hostel.PresentationWeb", "Hostel.PresentationWeb\Hostel.PresentationWeb.csproj", "{55C5EEB8-B67D-4EED-9625-ABD9C2C26AC6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hostel.PresentationWeb", "Hostel.PresentationWeb\Hostel.PresentationWeb.csproj", "{55C5EEB8-B67D-4EED-9625-ABD9C2C26AC6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hostel.BusinessLogic", "Hostel.BusinessLogic\Hostel.BusinessLogic.csproj", "{DECE1C56-112B-4495-BA7D-4D1A49258B82}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hostel.BusinessLogic", "Hostel.BusinessLogic\Hostel.BusinessLogic.csproj", "{DECE1C56-112B-4495-BA7D-4D1A49258B82}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hostel.DataAccess", "Hostel.DataAccess\Hostel.DataAccess.csproj", "{109EB325-3FC5-4552-9FEA-AAE1588A24DA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hostel.DataAccess", "Hostel.DataAccess\Hostel.DataAccess.csproj", "{109EB325-3FC5-4552-9FEA-AAE1588A24DA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hostel.Common", "Hostel.Common\Hostel.Common.csproj", "{254C581B-84FA-4C82-82B0-38045660DCD5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{109EB325-3FC5-4552-9FEA-AAE1588A24DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{109EB325-3FC5-4552-9FEA-AAE1588A24DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{109EB325-3FC5-4552-9FEA-AAE1588A24DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{254C581B-84FA-4C82-82B0-38045660DCD5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{254C581B-84FA-4C82-82B0-38045660DCD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{254C581B-84FA-4C82-82B0-38045660DCD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{254C581B-84FA-4C82-82B0-38045660DCD5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

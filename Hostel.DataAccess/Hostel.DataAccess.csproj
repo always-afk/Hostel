@@ -13,4 +13,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Hostel.Common\Hostel.Common.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Reflection;
-using Microsoft.EntityFrameworkCore;
 
-namespace Hostel.DataAccess.Models.LogicModels
+namespace Hostel.Common.Models.LogicModels
 {
     public class Student
     {

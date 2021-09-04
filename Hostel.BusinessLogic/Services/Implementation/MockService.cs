@@ -1,4 +1,4 @@
-﻿using Hostel.DataAccess.Models.LogicModels;
+﻿using Hostel.Common.Models.LogicModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
