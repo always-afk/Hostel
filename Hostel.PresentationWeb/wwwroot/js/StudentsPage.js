@@ -6,7 +6,6 @@
 
     var table = document.getElementById("table")
     var tBody = table.getElementsByTagName("tbody")[0]
-    console.log("tbody length: "+tBody.length)
     var newRow = document.createElement("tr")
 
     var head = document.getElementById("headtable")
@@ -102,37 +101,76 @@ function EditClick() {
     //for (var i of inputs) {
     //    i.type = 'text'
     //}
-    var cells = table.getElementsByTagName('td')
+
+
+    var editCells = table.getElementsByTagName('td')
     var inputs = table.getElementsByTagName('input')
     var th = table.getElementsByTagName('th')
 
-    for (var i = 0; i < cells.length; i++) {
-        var inputElement = cells[i].getElementsByTagName('input')[0]
+    for (var i = 0; i < editCells.length; i++) {
+        var inputElement = editCells[i].getElementsByTagName('input')[0]
         inputElement.type = 'text'
 
         if (i % 7 == 0 || i % 8 == 0) {
-            inputElement.value = cells[i].innerText
-            console.log('inner')
+            inputElement.value = editCells[i].innerText
         }
 
-        cells[i].innerHTML = inputElement.outerHTML
+        editCells[i].innerHTML = inputElement.outerHTML
 
 
         var sizesWidth = []
         var sizesHeight = []
 
 
-        //cells[i].style.height = parseInt(document.getElementsByTagName('th')[i].clientHeight) + 'px'
+        //editCells[i].style.height = parseInt(document.getElementsByTagName('th')[i].clientHeight) + 'px'
         inputElement.style.border = "0"
         inputElement.style.padding = "8px"
         inputElement.style.borderRadius = "0px"
         inputElement.style.background = "rgba(90,100, 205, 0.05)"
 
 
-        cells[i].style.padding = "0px"
-        cells[i].style.margin = "0px"
+        editCells[i].style.padding = "0px"
+        editCells[i].style.margin = "0px"
+    }
+
+
+    HideMainButons()
+    ShowEditButtons()
+    SetEditButtons(editCells)
+}
+
+function SetEditButtons(editCells) {
+    var applyButton = document.getElementById("ApplyEditButton")
+    applyButton.onclick = function () {
+        ApplyEdit(editCells)
     }
 }
+
+function ApplyEdit(editCells) {
+    HideEditButtons()
+    ShowMainButtons()
+
+
+    //ReadOnly is on
+    //var inputs = table.getElementsByTagName('input')
+    //for (input of inputs) {
+    //    input.readOnly = true
+    //    console.log('readOnly')
+    //}
+}
+
+function ShowEditButtons() {
+    var applyEditButton = document.getElementById('ApplyEditButton')
+    applyEditButton.hidden = false
+}
+
+function HideEditButtons() {
+    var applyEditButton = document.getElementById('ApplyEditButton')
+    var cancelButton = document.getElementById('CancelButton')
+    applyEditButton.hidden = true
+    cancelButton.hidden = true
+}
+
 
 function ApplyDelete() {
     var rows = table.getElementsByTagName('tr');
@@ -188,6 +226,15 @@ function CancelAdd() {
     HideSecButtons()
     ShowMainButtons()
 }
+
+function CancelEdit() {
+    ShowMainButtons()
+    HideEditButtons()
+
+    
+
+}
+
 
 function ApplyAdd() {
     var rows = table.getElementsByTagName('tr')
