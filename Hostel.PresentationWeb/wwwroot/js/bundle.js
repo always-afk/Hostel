@@ -47,7 +47,7 @@ function AddClick() {
         newInput.style.border = "0"
         newInput.style.padding="8px"
         newInput.style.borderRadius = "0px"
-        newInput.style.background = "rgba(90,100, 205, 0.05)"
+        newInput.style.background = "rgba(100,100, 205, 0.03)"
         
         
 
@@ -63,6 +63,8 @@ function AddClick() {
     table.getElementsByTagName("tbody")[0].appendChild(newRow)
     firstInputCell.select()
 }
+
+
 
 function DeleteClick() {
 
@@ -106,12 +108,34 @@ function EditClick() {
     //    i.type = 'text'
     //}
     var cells = table.getElementsByTagName('td')
-    for (var c of cells) {
-        c.outerText = null
-        //var inputs = c.getElementsByTagName('input')
-        //for (var i in inputs) {
-        //    i.type = 'text'
-        //}
+    var inputs = table.getElementsByTagName('input')
+    var th = table.getElementsByTagName('th')
+
+    for (var i = 0; i < cells.length; i++) {
+        var inputElement = cells[i].getElementsByTagName('input')[0]
+        inputElement.type = 'text'
+
+        if (i % 7 == 0 || i % 8 == 0) {
+            inputElement.value = cells[i].innerText
+            console.log('inner')
+        }
+
+        cells[i].innerHTML = inputElement.outerHTML
+
+
+        var sizesWidth = []
+        var sizesHeight = []
+
+
+        //cells[i].style.height = parseInt(document.getElementsByTagName('th')[i].clientHeight) + 'px'
+        inputElement.style.border = "0"
+        inputElement.style.padding = "8px"
+        inputElement.style.borderRadius = "0px"
+        inputElement.style.background = "rgba(90,100, 205, 0.05)"
+
+
+        cells[i].style.padding = "0px"
+        cells[i].style.margin = "0px"
     }
 }
 
@@ -188,9 +212,6 @@ function ApplyAdd() {
         input.value = td.innerHTML
         td.appendChild(input)
         newRow.appendChild(td)
-        //i.innerHTML = i.childNodes[0].value
-        //i.childNodes[0].name = "Model[" + lastrowNum + "].FullName"
-        //i.childNodes[0].hidden = true
     }
 
     lastrow.remove()
