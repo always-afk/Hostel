@@ -95,6 +95,21 @@ function DeleteClick() {
 
 }
 
+function EditClick() {
+    //var inputs = table.getElementsByTagName('input')
+    //for (var i of inputs) {
+    //    i.type = 'text'
+    //}
+    var cells = table.getElementsByTagName('td')
+    for (var c of cells) {
+        c.outerText = null
+        //var inputs = c.getElementsByTagName('input')
+        //for (var i in inputs) {
+        //    i.type = 'text'
+        //}
+    }
+}
+
 function ApplyDelete() {
     var rows = table.getElementsByTagName('tr');
     var rowstoDel = []

@@ -21,8 +21,8 @@
         <div class="button-block" id="AddButton" onclick="AddClick()">
             <a class="button-text">Добавить</a>
         </div>
-        <div class="button-block" id="EditButton">
-            <a class="button-text" asp-area="" asp-page="/Students/StudentFillForm">Редактировать</a>
+        <div class="button-block" id="EditButton" onclick="EditClick()">
+            <a class="button-text">Редактировать</a>
         </div>
         <div class="button-block" id="DeleteButton" onclick="DeleteClick()">
             <a class="button-text">Удалить</a>
@@ -74,37 +74,51 @@
         {
         <tr class="students-table-row">
             @{
-                <td><a asp-page="/Students/StudentFillForm" asp-route-Id="@Model[i].Id" style="color:inherit">@Model[i].FullName</a> </td>
-                <td width="70px">@Model[i].Gender</td>
-                <td> @Model[i].Nationality </td>
-                <td>@Model[i].Faculty </td>
-                <td>@Model[i].Course </td>
-                <td>@Model[i].Group </td>
-                <td>@Model[i].OrderNumber </td>
-                {
-                    dateTimeIn = Model[i].DataIn.ToShortDateString();
-                    dateTimeOut = Model[i].DataOut.ToShortDateString();
-                }
-
-                <td>@dateTimeIn</td>
-                <td>@dateTimeOut</td>
+                <td>
+                    <a asp-page="/Students/StudentFillForm" asp-route-Id="@Model[i].Id" style="color:inherit">@Model[i].FullName</a> 
+                    <input type="hidden" name="students[@i].FullName" value="@Model[i].FullName">
+                </td>
+                <td width="70px">
+                    @Model[i].Gender
+                    <input type="hidden" name="students[@i].Gender" value="@Model[i].Gender">
+                </td>
+                <td>
+                    @Model[i].Nationality
+                    <input type="hidden" name="students[@i].Nationality" value="@Model[i].Nationality">
+                </td>
+                <td>
+                    @Model[i].Faculty 
+                    <input type="hidden" name="students[@i].Faculty" value="@Model[i].Faculty">
+                </td>
+                <td>
+                    @Model[i].Course
+                    <input type="hidden" name="students[@i].Course" value="@Model[i].Course">
+                </td>
+                <td>
+                    @Model[i].Group 
+                    <input type="hidden" name="students[@i].Group" value="@Model[i].Group">
+                </td>
+                <td>
+                    @Model[i].OrderNumber
+                    <input type="hidden" name="students[@i].OrderNumber" value="@Model[i].OrderNumber">
+                </td>
+                <td>
+                    @Model[i].DataIn.ToShortDateString()
+                    <input type="hidden" name="students[@i].DataIn" value="@Model[i].DataIn">
+                </td>
+                <td>
+                    @Model[i].DataOut.ToShortDateString()
+                    <input type="hidden" name="students[@i].DataOut" value="@Model[i].DataOut">
+                </td>
                 <td style="text-align: center;">
                     @Model[i].PhoneNumber
+                    <input type="hidden" name="students[@i].PhoneNumber" value="@Model[i].PhoneNumber">
                 </td>
 
                 {
                     studentList.Add(Model[i]);
-                }
-                <input type="hidden" name="students[@i].FullName" value="@Model[i].FullName">
-                <input type="hidden" name="students[@i].Gender" value="@Model[i].Gender">
-                <input type="hidden" name="students[@i].Nationality" value="@Model[i].Nationality">
-                <input type="hidden" name="students[@i].Faculty" value="@Model[i].Faculty">
-                <input type="hidden" name="students[@i].Course" value="@Model[i].Course">
-                <input type="hidden" name="students[@i].Group" value="@Model[i].Group">
-                <input type="hidden" name="students[@i].OrderNumber" value="@Model[i].OrderNumber">
-                <input type="hidden" name="students[@i].DataIn" value="@Model[i].DataIn">
-                <input type="hidden" name="students[@i].DataOut" value="@Model[i].DataOut">
-                <input type="hidden" name="students[@i].PhoneNumber" value="@Model[i].PhoneNumber">
+                }   
+                
             }
         </tr>
         }
