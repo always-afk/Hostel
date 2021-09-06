@@ -139,24 +139,10 @@ function EditClick() {
     SetEditButtons(editCells)
 }
 
+
 function SetEditButtons(editCells) {
     var applyButton = document.getElementById("ApplyEditButton")
-    applyButton.onclick = function () {
-        ApplyEdit(editCells)
-    }
-}
-
-function ApplyEdit(editCells) {
-    HideEditButtons()
-    ShowMainButtons()
-
-
-    //ReadOnly is on
-    //var inputs = table.getElementsByTagName('input')
-    //for (input of inputs) {
-    //    input.readOnly = true
-    //    console.log('readOnly')
-    //}
+    applyButton.onclick = ApplyEdit
 }
 
 function ShowEditButtons() {
@@ -227,12 +213,21 @@ function CancelAdd() {
     ShowMainButtons()
 }
 
-function CancelEdit() {
+function ApplyEdit() {
+    var editCells = table.getElementsByTagName('td')
+
+    for (var i = 0; i < editCells.length; i++) {
+        var inputElement = editCells[i].getElementsByTagName('input')[0]
+        inputElement.type = 'hidden'
+
+        editCells[i].innerHTML = inputElement.value + inputElement.outerHTML
+        editCells[i].style.padding = '8px'
+        editCells[i].style.margin = '8px'
+
+        
+    }
     ShowMainButtons()
     HideEditButtons()
-
-    
-
 }
 
 
