@@ -22,9 +22,9 @@ namespace Hostel.PresentationWeb.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public IActionResult Rooms()
         {
-            ViewBag.Message = "Hello!";
+            //ViewBag.Message = "Hello!";
 
             return View();
         }

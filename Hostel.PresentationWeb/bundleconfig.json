@@ -32,5 +32,11 @@
     "inputFiles": [
       "wwwroot/lib/jquery-validation/dist/additional-methods.js"
     ]
+  },
+  {
+    "outputFileName": "wwwroot/js/RoomsPage.min.js",
+    "inputFiles": [
+      "wwwroot/js/RoomsPage.js"
+    ]
   }
 ]

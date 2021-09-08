@@ -33,6 +33,7 @@ namespace Hostel.PresentationWeb
             services.AddMvc().AddRazorOptions(opt => 
             {
                 opt.ViewLocationFormats.Add("/Views/Students/{0}.cshtml");
+                opt.ViewLocationFormats.Add("/Views/Rooms/{0}.cshtml");
             });
             services.AddDbContext<DataAccess.Context.AppDBContext>(options => options.UseSqlServer(_confStr.GetConnectionString("DefaultConnection")));
             services.AddScoped<DataAccess.Repositories.Interfaces.IRoomRepository, DataAccess.Repositories.Implementation.SQLRoomRepository>();
@@ -66,7 +67,7 @@ namespace Hostel.PresentationWeb
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Home}/{action=Rooms}/{id?}");
             });
         }
     }

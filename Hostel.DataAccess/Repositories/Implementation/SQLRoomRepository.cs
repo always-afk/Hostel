@@ -22,8 +22,6 @@ namespace Hostel.DataAccess.Repositories.Implementation
         {
             _context.Rooms.Add(new Models.DataModels.Room() 
             {
-                Floor = r.Floor,
-                MaxStudents = r.MaxStudents,
                 Number = r.Number,
                 Unit = r.Unit
             });
@@ -46,8 +44,6 @@ namespace Hostel.DataAccess.Repositories.Implementation
             return _context.Rooms.Select(r => new Room 
             { 
                 Id = r.Id,
-                Floor = r.Floor,
-                MaxStudents = r.MaxStudents,
                 Number = r.Number,
                 Unit = r.Unit
             });
