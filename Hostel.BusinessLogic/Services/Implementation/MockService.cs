@@ -9,9 +9,9 @@ namespace Hostel.BusinessLogic.Services.Implementation
 {
     public class MockService : Interfaces.IMockService
     {
-        public IEnumerable<Student> GetAllStudents()
+        public IEnumerable<Room> GetAllRooms()
         {
-            return new List<Student>()
+            var students = new List<Student>()
             {
                 new Student(fullName:"Ерофеенко Владислав Алексеевич",nationality:"Беларусь",gender:'М',
                     faculty:"ФИТР",course:3,group:10701218,orderNumber:1,dataIn:new DateTime(2018,8,20),dataOut:new DateTime (2022,8,20),"+375441234567",222),
@@ -28,14 +28,33 @@ namespace Hostel.BusinessLogic.Services.Implementation
                 new Student("Уайт Уолтер Хартвелл","США",'М',
                     "ИПФ",3,10701218,1,new DateTime(2018,8,22),new DateTime (2022,8,10),"+375441230027",244)
             };
+            var rooms = new List<Room>()
+            {
+                new Room()
+                {
+                    Number = 101,
+                    Unit ='A'
+                },
+                new Room()
+                {
+                    Number = 101,
+                    Unit = 'B'
+                },
+                new Room()
+                {
+                    Number = 201,
+                    Unit = 'A'
+                }
+            };
+            rooms[0].Students.Add(students[0]);
+            rooms[0].Students.Add(students[1]);
+            rooms[1].Students.Add(students[2]);
+            return rooms;
         }
 
-        public void Save(IEnumerable<Student> students)
+        public void Save(List<Room> rooms)
         {
-            foreach(var s in students)
-            {
-                Console.WriteLine($"Name:{s.FullName} - Phone Number:{s.PhoneNumber}");
-            }
+            
         }
     }
 }

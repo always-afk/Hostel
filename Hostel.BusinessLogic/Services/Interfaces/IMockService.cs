@@ -9,7 +9,7 @@ namespace Hostel.BusinessLogic.Services.Interfaces
 {
     public interface IMockService
     {
-        IEnumerable<Student> GetAllStudents();
-        void Save(IEnumerable<Student> students);
+        IEnumerable<Room> GetAllRooms();
+        void Save(List<Room> rooms);
     }
 }

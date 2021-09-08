@@ -7,9 +7,7 @@ namespace Hostel.Common.Models.LogicModels
     {
         public int Id { get; set; }
         public int Number { get; set; }
-        public int Floor { get; set; }
         public char Unit { get; set; }
-        public int MaxStudents { get; set; }
-        public virtual IEnumerable<Student> Students { get; set; }
+        public virtual List<Student> Students { get; set; }
     }
 }
