@@ -78,19 +78,26 @@ namespace Hostel.DataAccess.Repositories.Implementation
             var newStudents = ConvertStudents(students);
             foreach(var student in newStudents)
             {
-                if (!_context.Students.Contains(student))
+                if (!_context.Students.Any(s => 
+                    Check(s, student)))
                 {
                     _context.Students.Add(student);
                 }
             }
             foreach(var student in _context.Students)
             {
-                if (!newStudents.Contains(student))
+                if (!newStudents.Any(s =>
+                    Check(s, student)))
                 {
                     _context.Students.Remove(student);
                 }
             }
             _context.SaveChanges();
+        }
+
+        private bool Check(Models.DataModels.Student dstudent, Models.DataModels.Student lstudent)
+        {
+            return dstudent.FullName == lstudent.FullName && dstudent.Gender == lstudent.Gender && dstudent.Nationality == lstudent.Nationality;
         }
 
         private List<Models.DataModels.Student> ConvertStudents(List<Student> students)

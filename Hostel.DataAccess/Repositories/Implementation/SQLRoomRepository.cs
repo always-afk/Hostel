@@ -53,5 +53,47 @@ namespace Hostel.DataAccess.Repositories.Implementation
         {
 
         }
+
+        public void Save(List<Room> rooms)
+        {
+            var newRooms = Convert(rooms);
+            foreach(var room in newRooms)
+            {
+                if(!_context.Rooms.Any(r => Check(r, room)))
+                {
+                    _context.Rooms.Add(room);
+                }
+            }
+            foreach(var room in _context.Rooms)
+            {
+                if(!newRooms.Any(r => Check(r, room)))
+                {
+                    foreach(var s in room.Students)
+                    {
+                        s.RoomId = null;
+                    }
+                    _context.Rooms.Remove(room);
+                }
+            }
+        }
+
+        private bool Check(Models.DataModels.Room droom, Models.DataModels.Room lroom)
+        {
+            return droom.Number == lroom.Number && droom.Unit == lroom.Unit;
+        }
+
+        private List<Models.DataModels.Room> Convert(List<Room> rooms)
+        {
+            var drooms = new List<Models.DataModels.Room>();
+            foreach(var room in rooms)
+            {
+                drooms.Add(new Models.DataModels.Room()
+                {
+                    Number = room.Number,
+                    Unit = room.Unit
+                });
+            }
+            return drooms;
+        }
     }
 }
