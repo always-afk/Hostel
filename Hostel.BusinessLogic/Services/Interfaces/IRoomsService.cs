@@ -10,6 +10,6 @@ namespace Hostel.BusinessLogic.Services.Interfaces
     public interface IRoomsService
     {
         IEnumerable<Room> GetRooms();
-        void Save();
+        void Save(List<Room> rooms);
     }
 }
