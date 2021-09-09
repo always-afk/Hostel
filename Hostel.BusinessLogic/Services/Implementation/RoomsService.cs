@@ -24,7 +24,7 @@ namespace Hostel.BusinessLogic.Services.Implementation
 
         public void Save(List<Room> rooms)
         {
-            _roomRepository.Save
+            _roomRepository.Save(rooms);
         }
     }
 }
