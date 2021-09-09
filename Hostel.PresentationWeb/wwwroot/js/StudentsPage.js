@@ -22,7 +22,7 @@
         placeholders.push(cell.innerHTML)
     }
 
-    for (var i = 0; i < 10; i++) {
+    for (var i = 0; i < cells.length; i++) {
         
         var newTdCell = document.createElement("td")
         newTdCell.style.padding = "0"
