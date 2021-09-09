@@ -15,25 +15,34 @@ namespace Hostel.PresentationWeb.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly IStudentsService _studentsService;
+        private readonly IRoomsService _roomsService;
 
-        public HomeController(ILogger<HomeController> logger, IStudentsService studentsService)
+        public HomeController(ILogger<HomeController> logger, IStudentsService studentsService, IRoomsService roomsService)
         {
             _studentsService = studentsService;
+            _roomsService = roomsService;
             _logger = logger;
         }
-
-        public IActionResult Rooms()
-        {
-            //ViewBag.Message = "Hello!";
-
-            return View();
-        }
-
         public IActionResult Privacy()
         {
             return View();
         }
 
+
+        public IActionResult Rooms()
+        {
+            return View(_roomsService.GetRooms().ToList());
+        }
+
+        [HttpPost]
+        public IActionResult Rooms(List<Room> rooms)
+        {
+            _roomsService.Save(rooms);
+
+            return Rooms();
+        }
+
+        
          public IActionResult Students()
         {
             return View(_studentsService.GetAllStudents().ToList());

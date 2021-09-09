@@ -8,20 +8,6 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/css/bundle.css",
-    "inputFiles": [
-      "wwwroot/css/site.css",
-      "wwwroot/css/Styles.css"
-    ]
-  },
-  {
-    "outputFileName": "wwwroot/js/bundle.js",
-    "inputFiles": [
-      "wwwroot/js/site.js",
-      "wwwroot/js/StudentsPage.js"
-    ]
-  },
-  {
     "outputFileName": "wwwroot/lib/jquery/dist/jquery.min.js",
     "inputFiles": [
       "wwwroot/lib/jquery/dist/jquery.js"
@@ -37,6 +23,24 @@
     "outputFileName": "wwwroot/js/RoomsPage.min.js",
     "inputFiles": [
       "wwwroot/js/RoomsPage.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/bundle.js",
+    "inputFiles": [
+      "wwwroot/js/chosen.jquery.js",
+      "wwwroot/js/chosen.proto.js",
+      "wwwroot/js/RoomsPage.js",
+      "wwwroot/js/site.js",
+      "wwwroot/js/StudentsPage.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/css/bundle.css",
+    "inputFiles": [
+      "wwwroot/css/chosen.css",
+      "wwwroot/css/site.css",
+      "wwwroot/css/Styles.css"
     ]
   }
 ]

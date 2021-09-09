@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="chosen" Version="1.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Hostel.Common\Hostel.Common.csproj" />
     <ProjectReference Include="..\Hostel.DataAccess\Hostel.DataAccess.csproj" />
   </ItemGroup>

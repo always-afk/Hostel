@@ -15,6 +15,21 @@
     <footer class="border-top footer" style="max-width:100%;width:100%;left:0"> </footer>
 </div>
 
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("select").chosen();
+        $("chosen-select-width").chosen();
+
+    });
+</script>
+<select class="select">
+    
+    <option>test1</option>
+    <option>test2</option>
+    <option>test3</option>
+    <option>test4</option>
+</select>
+
 
 <!--Кнопки-->
 <form method="post" asp-controller="Home" asp-action="Rooms">
@@ -63,87 +78,87 @@
 
 
     @*
-    <div class="students-table-container">
-        <table id="table">
-            <!--Шапка таблицы-->
-            <tr class="students-table-header" id="headtable">
-                <th>Ф.И.О.</th>
-                <th>Пол</th>
-                <th>Страна</th>
-                <th>Факультет</th>
-                <th>Курс</th>
-                <th>Группа</th>
-                <th>Номер приказа</th>
-                <th>Дата заезда</th>
-                <th>Дата выезда</th>
-                <th style="min-width:180px;">Номер телефона</th>
-            </tr>
-
-            <!--Данные таблицы-->
-
-            @{
-
-                string n = "";
-                string dateTimeIn = "";
-                string dateTimeOut = "";
-                Student newStudent = new Student();
-            }
-
-
-            @for (var i = 0; i < Model.Count; i++)
-            {
-                <tr class="students-table-row">
-                    @{
-                        <td>
-                            <a asp-page="/Students/StudentFillForm" asp-route-Id="@Model[i].Id" style="color:inherit">@Model[i].FullName</a>
-                            <input type="hidden" name="students[@i].FullName" value="@Model[i].FullName">
-                        </td>
-                        <td width="70px">
-                            @Model[i].Gender
-                            <input type="hidden" name="students[@i].Gender" value="@Model[i].Gender">
-                        </td>
-                        <td>
-                            @Model[i].Nationality
-                            <input type="hidden" name="students[@i].Nationality" value="@Model[i].Nationality">
-                        </td>
-                        <td>
-                            @Model[i].Faculty
-                            <input type="hidden" name="students[@i].Faculty" value="@Model[i].Faculty">
-                        </td>
-                        <td>
-                            @Model[i].Course
-                            <input type="hidden" name="students[@i].Course" value="@Model[i].Course">
-                        </td>
-                        <td>
-                            @Model[i].Group
-                            <input type="hidden" name="students[@i].Group" value="@Model[i].Group">
-                        </td>
-                        <td>
-                            @Model[i].OrderNumber
-                            <input type="hidden" name="students[@i].OrderNumber" value="@Model[i].OrderNumber">
-                        </td>
-                        <td>
-                            @Model[i].DataIn.ToShortDateString()
-                            <input type="hidden" name="students[@i].DataIn" value="@Model[i].DataIn">
-                        </td>
-                        <td>
-                            @Model[i].DataOut.ToShortDateString()
-                            <input type="hidden" name="students[@i].DataOut" value="@Model[i].DataOut">
-                        </td>
-                        <td style="text-align: center;">
-                            @Model[i].PhoneNumber
-                            <input type="hidden" name="students[@i].PhoneNumber" value="@Model[i].PhoneNumber">
-                        </td>
-
-                        {
-                            studentList.Add(Model[i]);
-                        }
-
-                    }
+        <div class="students-table-container">
+            <table id="table">
+                <!--Шапка таблицы-->
+                <tr class="students-table-header" id="headtable">
+                    <th>Ф.И.О.</th>
+                    <th>Пол</th>
+                    <th>Страна</th>
+                    <th>Факультет</th>
+                    <th>Курс</th>
+                    <th>Группа</th>
+                    <th>Номер приказа</th>
+                    <th>Дата заезда</th>
+                    <th>Дата выезда</th>
+                    <th style="min-width:180px;">Номер телефона</th>
                 </tr>
-            }
-        </table>
-    </div>*@
+
+                <!--Данные таблицы-->
+
+                @{
+
+                    string n = "";
+                    string dateTimeIn = "";
+                    string dateTimeOut = "";
+                    Student newStudent = new Student();
+                }
+
+
+                @for (var i = 0; i < Model.Count; i++)
+                {
+                    <tr class="students-table-row">
+                        @{
+                            <td>
+                                <a asp-page="/Students/StudentFillForm" asp-route-Id="@Model[i].Id" style="color:inherit">@Model[i].FullName</a>
+                                <input type="hidden" name="students[@i].FullName" value="@Model[i].FullName">
+                            </td>
+                            <td width="70px">
+                                @Model[i].Gender
+                                <input type="hidden" name="students[@i].Gender" value="@Model[i].Gender">
+                            </td>
+                            <td>
+                                @Model[i].Nationality
+                                <input type="hidden" name="students[@i].Nationality" value="@Model[i].Nationality">
+                            </td>
+                            <td>
+                                @Model[i].Faculty
+                                <input type="hidden" name="students[@i].Faculty" value="@Model[i].Faculty">
+                            </td>
+                            <td>
+                                @Model[i].Course
+                                <input type="hidden" name="students[@i].Course" value="@Model[i].Course">
+                            </td>
+                            <td>
+                                @Model[i].Group
+                                <input type="hidden" name="students[@i].Group" value="@Model[i].Group">
+                            </td>
+                            <td>
+                                @Model[i].OrderNumber
+                                <input type="hidden" name="students[@i].OrderNumber" value="@Model[i].OrderNumber">
+                            </td>
+                            <td>
+                                @Model[i].DataIn.ToShortDateString()
+                                <input type="hidden" name="students[@i].DataIn" value="@Model[i].DataIn">
+                            </td>
+                            <td>
+                                @Model[i].DataOut.ToShortDateString()
+                                <input type="hidden" name="students[@i].DataOut" value="@Model[i].DataOut">
+                            </td>
+                            <td style="text-align: center;">
+                                @Model[i].PhoneNumber
+                                <input type="hidden" name="students[@i].PhoneNumber" value="@Model[i].PhoneNumber">
+                            </td>
+
+                            {
+                                studentList.Add(Model[i]);
+                            }
+
+                        }
+                    </tr>
+                }
+            </table>
+        </div>*@
 </form>
 
 

@@ -36,10 +36,14 @@ namespace Hostel.PresentationWeb
                 opt.ViewLocationFormats.Add("/Views/Rooms/{0}.cshtml");
             });
             services.AddDbContext<DataAccess.Context.AppDBContext>(options => options.UseSqlServer(_confStr.GetConnectionString("DefaultConnection")));
+
             services.AddScoped<DataAccess.Repositories.Interfaces.IRoomRepository, DataAccess.Repositories.Implementation.SQLRoomRepository>();
             services.AddScoped<DataAccess.Repositories.Interfaces.IStudentRepository, DataAccess.Repositories.Implementation.SQLStudentRepository>();
+
             services.AddScoped<BusinessLogic.Services.Interfaces.IMockService, BusinessLogic.Services.Implementation.MockService>();
+
             services.AddScoped<BusinessLogic.Services.Interfaces.IStudentsService, BusinessLogic.Services.Implementation.StudentsService>();
+            services.AddScoped<BusinessLogic.Services.Interfaces.IRoomsService, BusinessLogic.Services.Implementation.RoomsService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

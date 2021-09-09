@@ -66,6 +66,9 @@ function CancelDelete() {
 
 }
 
+//Chosen
+
+
 
 //////New
 function AddClick() {
@@ -96,31 +99,36 @@ function AddClick() {
 
         var newTdCell = document.createElement("td")
         newTdCell.style.padding = "0"
-        newTdCell.style.background = "white"
-        var newInput = document.createElement("input")
-        /*newInput.name = "students["+6+"].FullName"*/
-        if (i == 0) {
-            var firstInputCell = newInput
+
+        if (i % 10 != 0) {
+
+            newTdCell.style.background = "white"
+            var newInput = document.createElement("input")
+
+
+            newInput.type = Text
+            //fullName.style.width = parseInt(sizes[i])-17 + "px"
+
+            //Styles:
+            newInput.style.width = parseInt(sizesWidth[i]) - 1 + "px"
+            newInput.style.height = parseInt(sizesHeight[i]) + "px"
+            newInput.style.border = "0"
+            newInput.style.padding = "8px"
+            newInput.style.borderRadius = "0px"
+            newInput.style.background = "rgba(100,100, 205, 0.03)"
+
+            newInput.placeholder = placeholders[i]
+
+            if (i == 1) {
+                var firstInputCell = newInput
+            }
+
+            newTdCell.appendChild(newInput)
         }
-        newInput.type = Text
-        //fullName.style.width = parseInt(sizes[i])-17 + "px"
-
-        //Styles:
-        newInput.style.width = parseInt(sizesWidth[i]) - 1 + "px"
-        newInput.style.height = parseInt(sizesHeight[i]) + "px"
-        newInput.style.border = "0"
-        newInput.style.padding = "8px"
-        newInput.style.borderRadius = "0px"
-        newInput.style.background = "rgba(100,100, 205, 0.03)"
-
-
-
-
+        
         //
-        newInput.placeholder = placeholders[i]
-        newTdCell.appendChild(newInput)
         newRow.appendChild(newTdCell)
-        newInput.select()
+        
     }
 
 
