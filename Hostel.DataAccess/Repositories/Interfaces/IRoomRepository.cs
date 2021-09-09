@@ -13,5 +13,6 @@ namespace Hostel.DataAccess.Repositories.Interfaces
 
         public void Add(Room newRoom);
         public void Delete(int id);
+        public void Save(List<Room> rooms);
     }
 }
