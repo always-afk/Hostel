@@ -78,8 +78,8 @@ namespace Hostel.DataAccess.Repositories.Implementation
             var newStudents = ConvertStudents(students);
             foreach(var student in newStudents)
             {
-                if (!_context.Students.Any(s => 
-                    Check(s, student)))
+                if (!_context.Students.Any(s =>
+                    s.FullName == student.FullName && s.Gender == student.Gender && s.Nationality == student.Nationality))
                 {
                     _context.Students.Add(student);
                 }
@@ -87,7 +87,7 @@ namespace Hostel.DataAccess.Repositories.Implementation
             foreach(var student in _context.Students)
             {
                 if (!newStudents.Any(s =>
-                    Check(s, student)))
+                    s.FullName == student.FullName && s.Gender == student.Gender && s.Nationality == student.Nationality))
                 {
                     _context.Students.Remove(student);
                 }

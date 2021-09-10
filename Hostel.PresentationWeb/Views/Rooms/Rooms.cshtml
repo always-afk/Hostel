@@ -73,6 +73,33 @@
                 <th>Блок</th>
                 <th>Ф.И.О.</th>
             </tr>
+            @for (var i = 0; i < Model.Count; i++)
+            {
+
+
+                @if (Model[i].Students.Count > 0)
+                {
+                    @for (var j = 0; j < Model[i].Students.Count; j++)
+                    {
+                        <tr>
+                            <td>@Model[i].Floor</td>
+                            <td>@Model[i].Number</td>
+                            <td>@Model[i].Unit</td>
+                            <td>@Model[i].Students[j].FullName</td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td class="empty">@Model[i].Floor</td>
+                        <td class="empty">@Model[i].Number</td>
+                        <td class="empty">@Model[i].Unit</td>
+                        <td class="empty">Пусто</td>
+                    </tr>
+                }
+
+            }
         </table>
     </div>
 

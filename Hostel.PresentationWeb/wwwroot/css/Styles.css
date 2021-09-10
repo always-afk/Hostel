@@ -82,7 +82,9 @@ td {
     transition: .1s linear;
     border-bottom: 1px groove #2664a8;
 }
-
+td.empty {
+    background:rgba(155,155,155,0.5);
+}
 input[type=text].td {
     margin:0;
     padding:0;

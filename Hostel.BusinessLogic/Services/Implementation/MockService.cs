@@ -33,17 +33,20 @@ namespace Hostel.BusinessLogic.Services.Implementation
                 new Room()
                 {
                     Number = 101,
-                    Unit ='A'
+                    Unit ='A',
+                    Students = new List<Student>()
                 },
                 new Room()
                 {
                     Number = 101,
-                    Unit = 'B'
+                    Unit = 'B',
+                    Students = new List<Student>()
                 },
                 new Room()
                 {
                     Number = 201,
-                    Unit = 'A'
+                    Unit = 'A',
+                    Students = new List<Student>()
                 }
             };
             rooms[0].Students.Add(students[0]);
