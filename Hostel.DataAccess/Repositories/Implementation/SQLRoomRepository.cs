@@ -75,6 +75,7 @@ namespace Hostel.DataAccess.Repositories.Implementation
                     _context.Rooms.Remove(room);
                 }
             }
+            SetStudents(rooms);
         }
 
         private bool Check(Models.DataModels.Room droom, Models.DataModels.Room lroom)
@@ -94,6 +95,19 @@ namespace Hostel.DataAccess.Repositories.Implementation
                 });
             }
             return drooms;
+        }
+
+        private void SetStudents(List<Room> rooms)
+        {
+            foreach(var room in rooms)
+            {
+                int id = _context.Rooms.Where(r => r.Number == room.Number && r.Unit == room.Unit).FirstOrDefault().Id;
+                foreach(var student in room.Students)
+                {
+                    _context.Students.Where(s => s.FullName == student.FullName && s.Gender == student.Gender && s.Nationality == s.Nationality).FirstOrDefault().RoomId = id;
+                }
+            }
+            _context.SaveChanges();
         }
     }
 }
