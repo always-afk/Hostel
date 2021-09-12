@@ -71,6 +71,7 @@ function CancelDelete() {
 
 
 //////New
+
 function AddClick() {
 
     HideMainButons()
@@ -88,6 +89,23 @@ function AddClick() {
     var sizesWidth = []
     var sizesHeight = []
     var placeholders = []
+    var allNewInputs = []
+
+    var unitOptions = ['А', 'Б']
+
+    var studentList = []
+
+    let k=0
+    while (true) {
+        let student = document.getElementById('student-id' + k)
+        if (student == null) { break; }
+        else {
+            studentList.push(document.getElementById('student-id' + k))
+            console.log(studentList[k].value)
+            k++
+        }
+            
+    }
 
     for (var cell of cells) {
         sizesWidth.push(cell.clientWidth)
@@ -99,41 +117,96 @@ function AddClick() {
 
         var newTdCell = document.createElement("td")
         newTdCell.style.padding = "0"
+        newTdCell.style.background = 'white'
+        if (i % cells.length >1 && i % cells.length<=3) {
 
-        if (i % 10 != 0) {
+            var newInput = document.createElement("select")
+            newInput.className = "myClass"
+            $(document).ready(function () {
 
-            newTdCell.style.background = "white"
-            var newInput = document.createElement("input")
 
+                $(".myClass").chosen({ width: "100%", no_results_text : "-"})
 
-            newInput.type = Text
-            //fullName.style.width = parseInt(sizes[i])-17 + "px"
+            });
+            $(document).ready(function () {
+                $newHeight = $('th').css('height') 
+                $(".chosen-container-single .chosen-single").css('border-radius', '0px')
+                $(".chosen-container-single .chosen-single").css('height', $newHeight )                
+                
+
+            });
+
+            for (unit of unitOptions) {
+                let option = document.createElement('option')
+                option.value = unit
+                option.innerHTML = unit
+                if (i % cells.length == 2) {
+                    newInput.options.add(option)
+                }
+            }
+
+            for (student of studentList) {
+                if (i % cells.length == 3) {
+                    newInput.options.add(student)
+                    console.log('student-opt')
+                }
+            }
+
+            
 
             //Styles:
+            newInput.style.width = parseInt(sizesWidth[i]) - 1 + "px"
+            newInput.style.height = parseInt(sizesHeight[i]) + "px"
+            newInput.style.border = "0"
+            newInput.style.padding = "0px"
+            newInput.style.borderRadius = "0px"
+            newInput.style.background = "rgba(100,100, 205, 0.03)"
+
+            newInput.placeholder = placeholders[i]
+
+            newTdCell.appendChild(newInput)
+
+            
+            if (i % cells.length == 3) {
+                for (student of studentList) {
+                    student.hidden = false
+                    newInput.options.add(student)
+                }
+            }
+            
+            
+
+            
+            
+
+        }
+        else if (i % cells.length == 1) {
+
+            var newInput = document.createElement("input")
+            newInput.maxLength = 3
+            newTdCell.appendChild(newInput)
+            //
             newInput.style.width = parseInt(sizesWidth[i]) - 1 + "px"
             newInput.style.height = parseInt(sizesHeight[i]) + "px"
             newInput.style.border = "0"
             newInput.style.padding = "8px"
             newInput.style.borderRadius = "0px"
             newInput.style.background = "rgba(100,100, 205, 0.03)"
-
-            newInput.placeholder = placeholders[i]
-
-            if (i == 1) {
-                var firstInputCell = newInput
-            }
-
-            newTdCell.appendChild(newInput)
         }
-        
+        if (i == 1) {
+            var firstInputCell = newInput
+        }
         //
+        
+
         newRow.appendChild(newTdCell)
+        allNewInputs.push(newInput)
         
     }
-
-
+    
     table.getElementsByTagName("tbody")[0].appendChild(newRow)
     firstInputCell.select()
+
 }
 
 

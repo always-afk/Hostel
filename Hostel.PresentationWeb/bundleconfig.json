@@ -42,5 +42,11 @@
       "wwwroot/css/site.css",
       "wwwroot/css/Styles.css"
     ]
+  },
+  {
+    "outputFileName": "wwwroot/js/RoomsValidation.min.js",
+    "inputFiles": [
+      "wwwroot/js/RoomsValidation.js"
+    ]
   }
 ]

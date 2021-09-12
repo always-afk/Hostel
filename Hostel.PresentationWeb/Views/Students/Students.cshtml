@@ -8,7 +8,6 @@
 @{
     List<Student> studentList = new List<Student>();
 }
-<select class="chzn"></select>
 
 <!--Название таблицы-->
 <div class="students-header">
@@ -73,61 +72,70 @@
                 string dateTimeIn = "";
                 string dateTimeOut = "";
                 Student newStudent = new Student();
+                string trGenderClassName = "";
             }
 
 
             @for (var i=0;i<Model.Count;i++)
-        {
-        <tr class="students-table-row">
-            @{
-                <td>
-                    <a asp-page="/Students/StudentFillForm" asp-route-Id="@Model[i].Id" style="color:inherit">@Model[i].FullName</a> 
-                    <input type="hidden" name="students[@i].FullName" value="@Model[i].FullName">
-                </td>
-                <td width="70px">
-                    @Model[i].Gender
-                    <input type="hidden" name="students[@i].Gender" value="@Model[i].Gender">
-                </td>
-                <td>
-                    @Model[i].Nationality
-                    <input type="hidden" name="students[@i].Nationality" value="@Model[i].Nationality">
-                </td>
-                <td>
-                    @Model[i].Faculty 
-                    <input type="hidden" name="students[@i].Faculty" value="@Model[i].Faculty">
-                </td>
-                <td>
-                    @Model[i].Course
-                    <input type="hidden" name="students[@i].Course" value="@Model[i].Course">
-                </td>
-                <td>
-                    @Model[i].Group 
-                    <input type="hidden" name="students[@i].Group" value="@Model[i].Group">
-                </td>
-                <td>
-                    @Model[i].OrderNumber
-                    <input type="hidden" name="students[@i].OrderNumber" value="@Model[i].OrderNumber">
-                </td>
-                <td>
-                    @Model[i].DataIn.ToShortDateString()
-                    <input type="hidden" name="students[@i].DataIn" value="@Model[i].DataIn">
-                </td>
-                <td>
-                    @Model[i].DataOut.ToShortDateString()
-                    <input type="hidden" name="students[@i].DataOut" value="@Model[i].DataOut">
-                </td>
-                <td style="text-align: center;">
-                    @Model[i].PhoneNumber
-                    <input type="hidden" name="students[@i].PhoneNumber" value="@Model[i].PhoneNumber">
-                </td>
-
+            {
+                @if (Model[i].Gender == 'М')
                 {
-                    studentList.Add(Model[i]);
-                }   
+                    trGenderClassName = "boy-student";
+                }
+                else if (Model[i].Gender == 'Ж')
+                {
+                    trGenderClassName = "girl-student";
+                }
+            <tr class="@trGenderClassName ">
+                @{
+                    <td>
+                        <a asp-page="/Students/StudentFillForm" asp-route-Id="@Model[i].Id" style="color:inherit">@Model[i].FullName</a> 
+                        <input type="hidden" name="students[@i].FullName" value="@Model[i].FullName">
+                    </td>
+                    <td width="70px">
+                        @Model[i].Gender
+                        <input type="hidden" name="students[@i].Gender" value="@Model[i].Gender">
+                    </td>
+                    <td>
+                        @Model[i].Nationality
+                        <input type="hidden" name="students[@i].Nationality" value="@Model[i].Nationality">
+                    </td>
+                    <td>
+                        @Model[i].Faculty 
+                        <input type="hidden" name="students[@i].Faculty" value="@Model[i].Faculty">
+                    </td>
+                    <td>
+                        @Model[i].Course
+                        <input type="hidden" name="students[@i].Course" value="@Model[i].Course">
+                    </td>
+                    <td>
+                        @Model[i].Group 
+                        <input type="hidden" name="students[@i].Group" value="@Model[i].Group">
+                    </td>
+                    <td>
+                        @Model[i].OrderNumber
+                        <input type="hidden" name="students[@i].OrderNumber" value="@Model[i].OrderNumber">
+                    </td>
+                    <td>
+                        @Model[i].DataIn.ToShortDateString()
+                        <input type="hidden" name="students[@i].DataIn" value="@Model[i].DataIn">
+                    </td>
+                    <td>
+                        @Model[i].DataOut.ToShortDateString()
+                        <input type="hidden" name="students[@i].DataOut" value="@Model[i].DataOut">
+                    </td>
+                    <td style="text-align: center;">
+                        @Model[i].PhoneNumber
+                        <input type="hidden" name="students[@i].PhoneNumber" value="@Model[i].PhoneNumber">
+                    </td>
+
+                    {
+                        studentList.Add(Model[i]);
+                    }   
                 
+                }
+            </tr>
             }
-        </tr>
-        }
         </table>
     </div>
 </form>

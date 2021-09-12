@@ -41,6 +41,7 @@ namespace Hostel.PresentationWeb
             services.AddScoped<DataAccess.Repositories.Interfaces.IStudentRepository, DataAccess.Repositories.Implementation.SQLStudentRepository>();
 
             services.AddScoped<BusinessLogic.Services.Interfaces.IMockService, BusinessLogic.Services.Implementation.MockService>();
+            services.AddScoped<BusinessLogic.Services.Interfaces.IMockRoomService, BusinessLogic.Services.Implementation.MockRoomService>();
 
             services.AddScoped<BusinessLogic.Services.Interfaces.IStudentsService, BusinessLogic.Services.Implementation.StudentsService>();
             services.AddScoped<BusinessLogic.Services.Interfaces.IRoomsService, BusinessLogic.Services.Implementation.RoomsService>();

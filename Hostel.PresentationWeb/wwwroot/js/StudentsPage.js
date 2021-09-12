@@ -238,16 +238,29 @@ function ApplyAdd() {
     var newRow = document.createElement('tr')
     var properties = ['FullName', 'Gender', 'Nationality', 'Faculty', 'Course', 'Group', 'OrderNumber', 'DataIn', 'DataOut', 'PhoneNumber']
     var j = 0
+    var trGenderClassName;
 
     for (var i of lastrow.cells) {
         var td = document.createElement('td')
         var input = document.createElement('input')
         input.type = 'hidden'
         input.name = 'students[' + (lastrowNum - 1) + '].' + properties[j]
-        j += 1
+
         td.innerHTML = i.childNodes[0].value
         input.value = td.innerHTML
+
+        if (properties.indexOf('Gender') == j) {
+            if (input.value == 'М') {
+                trGenderClassName = "boy-student"
+            }
+            else if (input.value == 'Ж') {
+                trGenderClassName = "girl-student"
+            }
+        }
+        
+        j += 1
         td.appendChild(input)
+        newRow.className = trGenderClassName;
         newRow.appendChild(td)
     }
 

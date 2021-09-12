@@ -82,8 +82,12 @@ td {
     transition: .1s linear;
     border-bottom: 1px groove #2664a8;
 }
-td.empty {
-    background:rgba(155,155,155,0.5);
+tr.empty td{
+    background:rgba(155,155,155,0.3);
+}
+
+tr.empty:hover td{
+    color:rgba(100,100,255,1);
 }
 input[type=text].td {
     margin:0;
@@ -91,6 +95,14 @@ input[type=text].td {
 }
 tr:hover td {
     color: rgba(139, 59, 225, 0.87);
+}
+
+tr.boy-student td{
+    background:rgba(50,90,210,0.7);
+}
+
+tr.girl-student td{
+    background:rgba(220,90,90,0.7);
 }
 
 .button-container {

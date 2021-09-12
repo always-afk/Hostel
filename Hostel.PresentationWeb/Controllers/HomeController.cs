@@ -17,12 +17,14 @@ namespace Hostel.PresentationWeb.Controllers
         private readonly IStudentsService _studentsService;
         private readonly IRoomsService _roomsService;
         private readonly IMockService _mockService;
+        private readonly IMockRoomService _mockRoomService;
 
-        public HomeController(ILogger<HomeController> logger, IStudentsService studentsService, IRoomsService roomsService, IMockService mockService)
+        public HomeController(ILogger<HomeController> logger, IStudentsService studentsService, IRoomsService roomsService, IMockService mockService, IMockRoomService mockRoomService)
         {
             _studentsService = studentsService;
             _roomsService = roomsService;
             _mockService = mockService;
+            _mockRoomService = mockRoomService;
             _logger = logger;
         }
         public IActionResult Privacy()
@@ -33,15 +35,18 @@ namespace Hostel.PresentationWeb.Controllers
 
         public IActionResult Rooms()
         {
-            //return View(_roomsService.GetRooms().ToList());
-            return View(_mockService.GetAllRooms().ToList());
+            var model = new Models.RoomsPageViewModel()
+            {
+                RoomList = _mockService.GetAllRooms().ToList(),
+                StudentList = _mockRoomService.GetAllStudents().ToList()
+
+            };
+            return View(model);
         }
 
         [HttpPost]
-        public IActionResult Rooms(List<Room> rooms)
+        public IActionResult Rooms(Models.RoomsPageViewModel model)
         {
-            _roomsService.Save(rooms);
-
             return Rooms();
         }
 
