@@ -47,6 +47,7 @@ namespace Hostel.PresentationWeb.Controllers
         [HttpPost]
         public IActionResult Rooms(Models.RoomsPageViewModel model)
         {
+            var i = 0;
             return Rooms();
         }
 

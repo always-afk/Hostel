@@ -17,7 +17,7 @@ namespace Hostel.Common.Models.LogicModels
 
         public Room()
         {
-
+            Students = new List<Student>();
         }
         public Room(int number, char unit, List<Student> students)
         {

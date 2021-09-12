@@ -72,9 +72,9 @@
                 @if (roomList[i].Students.Count > 0)
                 {
                     @for (var j = 0; j < roomList[i].Students.Count; j++)
-                        
+
                     {
-                        @if (roomList[i].Students[j].Gender=='М')
+                        @if (roomList[i].Students[j].Gender == 'М')
                         {
                             trGenderClassName = "boy-student";
                         }
@@ -101,10 +101,11 @@
                 }
 
             }
-            @for (var i=0;i<studentList.Count;i++)
+            @for (var i = 0; i < studentList.Count; i++)
             {
                 <option hidden id=@("student-id"+i)>@studentList[i].FullName</option>
-            }
+                <input hidden> @studentList[i].FullName</input>
+    }
         </table>
     </div>
 </form>

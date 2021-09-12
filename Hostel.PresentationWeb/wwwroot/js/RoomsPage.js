@@ -391,13 +391,30 @@ function ApplyAdd() {
     var properties = ['Floor', 'Number', 'Unit', 'FullName']
     var j = 0
 
+    var inputFloor = document.createElement('input')
+    inputFloor.type = 'hidden'
+    inputFloor.name = 'Model.roomList[' + (lastrowNum - 1) + '].' + properties[0]
+    inputFloor.value = lastrow.cells[1].childNodes[0].value[0]
+    lastrow.cells[0].innerHTML = inputFloor.value[0]
+    lastrow.cells[0].appendChild(inputFloor)
 
+    var input = document.createElement('input')
+    input.type = 'hidden'
+    input.name = 'Model.roomList[' + (lastrowNum - 1) + '].Students[Model.roomList.Students.Count].' + properties[3]
+    input.value = lastrow.cells[3].childNodes[0].value
+    lastrow.cells[3].innerHTML = lastrow.cells[3].childNodes[0].value
+    lastrow.cells[3].appendChild(input)
 
-    for (var i = 1; i < lastrow.cells.length; i++) {
+    for (var i = 1; i < lastrow.cells.length - 1; i++) {
+        var inp = document.createElement('input')
+        inp.type = 'hidden'
+        inp.name = 'Model.roomList[' + (lastrowNum - 1) + '].' + properties[i]
+        inp.value = lastrow.cells[i].childNodes[0].value
         lastrow.cells[i].innerHTML = lastrow.cells[i].childNodes[0].value
+        lastrow.cells[i].appendChild(inp)
     }
 
-    lastrow.cells[0].innerHTML = lastrow.cells[1].innerHTML[0]
+    
 
     //for (var i of lastrow.cells) {
     //    var td = document.createElement('td')
