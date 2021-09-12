@@ -37,8 +37,8 @@ namespace Hostel.PresentationWeb.Controllers
         {
             var model = new Models.RoomsPageViewModel()
             {
-                RoomList = _mockService.GetAllRooms().ToList(),
-                StudentList = _mockRoomService.GetAllStudents().ToList()
+                RoomList = _roomsService.GetRooms().ToList(),
+                StudentList = _studentsService.GetAllStudents().ToList()
 
             };
             return View(model);
@@ -47,7 +47,7 @@ namespace Hostel.PresentationWeb.Controllers
         [HttpPost]
         public IActionResult Rooms(Models.RoomsPageViewModel model)
         {
-            var i = 0;
+            _roomsService.Save(model.RoomList);
             return Rooms();
         }
 

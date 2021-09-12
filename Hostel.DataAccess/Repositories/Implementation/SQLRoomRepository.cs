@@ -46,6 +46,10 @@ namespace Hostel.DataAccess.Repositories.Implementation
                 Id = r.Id,
                 Number = r.Number,
                 Unit = r.Unit
+                //Students = Enumerable.Range(0,r.Students.ToList().Count).Select(student => new Student() {
+                //    FullName = r.Students.ToList()[0].FullName
+                //}).ToList()
+                
             });
         }
 
@@ -59,14 +63,14 @@ namespace Hostel.DataAccess.Repositories.Implementation
             var newRooms = Convert(rooms);
             foreach(var room in newRooms)
             {
-                if(!_context.Rooms.Any(r => Check(r, room)))
+                if(!_context.Rooms.Any(r => r.Number == room.Number && r.Unit == room.Unit))
                 {
                     _context.Rooms.Add(room);
                 }
             }
             foreach(var room in _context.Rooms)
             {
-                if(!newRooms.Any(r => Check(r, room)))
+                if(!newRooms.Any(r => r.Number == room.Number && r.Unit == room.Unit))
                 {
                     foreach(var s in room.Students)
                     {
@@ -75,6 +79,7 @@ namespace Hostel.DataAccess.Repositories.Implementation
                     _context.Rooms.Remove(room);
                 }
             }
+            _context.SaveChanges();
             SetStudents(rooms);
         }
 
@@ -104,7 +109,7 @@ namespace Hostel.DataAccess.Repositories.Implementation
                 int id = _context.Rooms.Where(r => r.Number == room.Number && r.Unit == room.Unit).FirstOrDefault().Id;
                 foreach(var student in room.Students)
                 {
-                    _context.Students.Where(s => s.FullName == student.FullName && s.Gender == student.Gender && s.Nationality == s.Nationality).FirstOrDefault().RoomId = id;
+                    _context.Students.Where(s => s.FullName == student.FullName).FirstOrDefault().RoomId = id;
                 }
             }
             _context.SaveChanges();

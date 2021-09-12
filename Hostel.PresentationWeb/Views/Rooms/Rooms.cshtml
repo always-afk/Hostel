@@ -101,12 +101,30 @@
                 }
 
             }
+            <!--for select options-->
             @for (var i = 0; i < studentList.Count; i++)
             {
                 <option hidden id=@("student-id"+i)>@studentList[i].FullName</option>
-                <input hidden> @studentList[i].FullName</input>
-    }
+            }
+
+            <!--for inputs-->
+            @for (var i = 0; i < roomList.Count; i++)
+            {
+                <input type="hidden" name="model.RoomList[@i].Number" value="@roomList[i].Number" />
+                <input type="hidden" name="model.RoomList[@i].Unit" value="@roomList[i].Unit" />
+                @for (var j = 0; j < roomList[i].Students.Count; j++)
+                {
+                    <input type="hidden" name="model.RoomList[@i].Student[@j].FullName" value="@roomList[i].Students[j].FullName" />
+
+                }
+                
+
+            }
+
+
         </table>
+        <input type="hidden" id="roomListLastIndex" value="@roomList.Count">
+        <input type="hidden" id="roomStudentListLastIndex" value="@roomList.Count">
     </div>
 </form>
 
