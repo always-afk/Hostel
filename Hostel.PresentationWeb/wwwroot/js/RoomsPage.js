@@ -207,6 +207,7 @@ function AddClick() {
     table.getElementsByTagName("tbody")[0].appendChild(newRow)
     firstInputCell.select()
 
+
 }
 
 
@@ -387,23 +388,31 @@ function ApplyAdd() {
     var lastrowNum = rows.length - 1
     var lastrow = rows.item(lastrowNum)
     var newRow = document.createElement('tr')
-    var properties = ['FullName', 'Gender', 'Nationality', 'Faculty', 'Course', 'Group', 'OrderNumber', 'DataIn', 'DataOut', 'PhoneNumber']
+    var properties = ['Floor', 'Number', 'Unit', 'FullName']
     var j = 0
 
-    for (var i of lastrow.cells) {
-        var td = document.createElement('td')
-        var input = document.createElement('input')
-        input.type = 'hidden'
-        input.name = 'students[' + (lastrowNum - 1) + '].' + properties[j]
-        j += 1
-        td.innerHTML = i.childNodes[0].value
-        input.value = td.innerHTML
-        td.appendChild(input)
-        newRow.appendChild(td)
+
+
+    for (var i = 1; i < lastrow.cells.length; i++) {
+        lastrow.cells[i].innerHTML = lastrow.cells[i].childNodes[0].value
     }
 
-    lastrow.remove()
-    table.getElementsByTagName("tbody")[0].appendChild(newRow)
+    lastrow.cells[0].innerHTML = lastrow.cells[1].innerHTML[0]
+
+    //for (var i of lastrow.cells) {
+    //    var td = document.createElement('td')
+    //    var input = document.createElement('input')
+    //    input.type = 'hidden'
+    //    input.name = 'Model.[' + (lastrowNum - 1) + '].' + properties[j]
+    //    j += 1
+    //    td.innerHTML = i.childNodes[0].value
+    //    input.value = td.innerHTML
+    //    td.appendChild(input)
+    //    newRow.appendChild(td)
+    //}
+
+    //lastrow.remove()
+    //table.getElementsByTagName("tbody")[0].appendChild(newRow)
 
     ShowMainButtons()
     HideSecButtons()
