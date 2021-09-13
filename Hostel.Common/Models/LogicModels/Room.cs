@@ -13,7 +13,7 @@ namespace Hostel.Common.Models.LogicModels
         public char Unit { get; set; }
         public int Floor { get { return Number / 100; } }
 
-        public virtual List<Student> Students { get; set; }
+        public List<Student> Students { get; set; }
 
         public Room()
         {
@@ -26,6 +26,7 @@ namespace Hostel.Common.Models.LogicModels
             Students = students;
 
         }
+
     }
 
 }

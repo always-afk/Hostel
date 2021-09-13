@@ -6,16 +6,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AutoMapper;
 
 namespace Hostel.DataAccess.Repositories.Implementation
 {
     public class SQLRoomRepository : IRoomRepository
     {
         private readonly AppDBContext _context;
+        private readonly IMapper _mapper;
 
-        public SQLRoomRepository(AppDBContext context)
+        public SQLRoomRepository(AppDBContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
         public void Add(Room r)
@@ -41,16 +44,23 @@ namespace Hostel.DataAccess.Repositories.Implementation
 
         public IEnumerable<Room> GetAllRooms()
         {
-            return _context.Rooms.Select(r => new Room 
-            { 
-                Id = r.Id,
-                Number = r.Number,
-                Unit = r.Unit
-                //Students = Enumerable.Range(0,r.Students.ToList().Count).Select(student => new Student() {
-                //    FullName = r.Students.ToList()[0].FullName
-                //}).ToList()
+            var drooms = _context.Rooms.ToList();
+            var lrooms = new List<Room>();
+            foreach(var droom in drooms)
+            {
+                var lroom = droom.ToRoom(droom);
+                lroom.Students = new List<Student>();
+                if(droom.Students is not null)
+                {
+                    foreach(var dstud in droom.Students)
+                    {
+                        lroom.Students.Add(dstud.ToStudent(dstud));
+                    }
+                }
                 
-            });
+                lrooms.Add(lroom);
+            }
+            return lrooms;
         }
 
         public void Fill()

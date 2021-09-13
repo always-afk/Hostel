@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using Hostel.Common;
 
 namespace Hostel.PresentationWeb
 {
@@ -36,6 +37,8 @@ namespace Hostel.PresentationWeb
                 opt.ViewLocationFormats.Add("/Views/Rooms/{0}.cshtml");
             });
             services.AddDbContext<DataAccess.Context.AppDBContext>(options => options.UseSqlServer(_confStr.GetConnectionString("DefaultConnection")));
+
+            services.AddMyAutoMapper();
 
             services.AddScoped<DataAccess.Repositories.Interfaces.IRoomRepository, DataAccess.Repositories.Implementation.SQLRoomRepository>();
             services.AddScoped<DataAccess.Repositories.Interfaces.IStudentRepository, DataAccess.Repositories.Implementation.SQLStudentRepository>();

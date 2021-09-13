@@ -49,9 +49,9 @@ namespace Hostel.BusinessLogic.Services.Implementation
                     Students = new List<Student>()
                 }
             };
-            rooms[0].Students.Add(students[0]);
-            rooms[0].Students.Add(students[1]);
-            rooms[1].Students.Add(students[2]);
+            //rooms[0].Students.Add(students[0]);
+            //rooms[0].Students.Add(students[1]);
+            //rooms[1].Students.Add(students[2]);
             return rooms;
         }
 
