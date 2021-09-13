@@ -57,6 +57,16 @@ namespace Hostel.DataAccess.Repositories.Implementation
                         lroom.Students.Add(dstud.ToStudent(dstud));
                     }
                 }
+                else
+                {
+                    foreach(var stud in _context.Students)
+                    {
+                        if(stud.RoomId == droom.Id)
+                        {
+                            lroom.Students.Add(stud.ToStudent(stud));
+                        }
+                    }
+                }
                 
                 lrooms.Add(lroom);
             }
