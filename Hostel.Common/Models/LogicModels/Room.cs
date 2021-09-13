@@ -13,6 +13,12 @@ namespace Hostel.Common.Models.LogicModels
         public char Unit { get; set; }
         public int Floor { get { return Number / 100; } }
 
+        public byte MaxStudents { get {
+                if (Unit == 'А') return 2;
+                else if (Unit == 'Б') return 1;
+                else return 0;
+            } }
+
         public List<Student> Students { get; set; }
 
         public Room()
